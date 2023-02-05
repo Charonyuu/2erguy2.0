@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 //公用
 export const Overlay = styled.div`
   position: absolute;
@@ -24,6 +25,7 @@ export const BottomButton = styled.div`
 `;
 
 //section1
+
 
 export const SectionOneContainer = styled.div`
   img {
@@ -74,6 +76,7 @@ export const SectionOneButton = styled.div`
   width: auto;
   padding: 0 10px;
 `;
+
 
 //section2
 export const VideoContainer = styled.div`

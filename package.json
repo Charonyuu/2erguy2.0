@@ -12,6 +12,7 @@
     "@next/font": "13.1.6",
     "babel-plugin-styled-components": "^2.0.7",
     "next": "13.1.6",
+    "next-compose-plugins": "^2.2.1",
     "next-svgr": "^0.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",

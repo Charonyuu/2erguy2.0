@@ -12,6 +12,7 @@ import {
   typography,
 } from "styled-system";
 
+
 export const FlexBox = styled.div`
   display: flex;
   position: relative;
