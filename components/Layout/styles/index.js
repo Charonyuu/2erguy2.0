@@ -1,9 +1,6 @@
 import styled from "styled-components";
+import { FlexBox } from "@/styles/globalStyles";
 
-export const FlexBox = styled.div`
-  display: flex;
-  align-items: center;
-`;
 
 // Header
 export const HeaderContainer = styled(FlexBox)`
