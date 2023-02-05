@@ -4,14 +4,19 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  border: 0;
   font-family: 'Carter One', cursive;
   font-family: 'Inter', sans-serif;
 }
 
-input{
-  border: 0;
-}
-
 input:focus{
   outline: none;
+}
+
+.slick-slider {
+  width: 100%;
+}
+.slick-slide{
+  display: flex !important;
+  justify-content: center;
 }
