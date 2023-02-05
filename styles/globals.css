@@ -8,3 +8,10 @@
   font-family: 'Inter', sans-serif;
 }
 
+input{
+  border: 0;
+}
+
+input:focus{
+  outline: none;
+}
