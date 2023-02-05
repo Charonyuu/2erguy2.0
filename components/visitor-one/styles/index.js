@@ -21,10 +21,10 @@ export const Overlay = styled.div`
 `;
 
 export const SectionOneBox = styled.div`
-    p{
-        color: white;
-        font-size: 24px;
-    }
+  p {
+    color: white;
+    font-size: 24px;
+  }
   position: absolute;
   left: 200px;
   top: 200px;
