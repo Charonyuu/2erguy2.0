@@ -1,9 +1,6 @@
 import styled from "styled-components";
+import { FlexBox } from "@/styles/globalStyles";
 
-export const FlexBox = styled.div`
-  display: flex;
-  align-items: center;
-`;
 
 // Header
 export const HeaderContainer = styled(FlexBox)`
@@ -11,6 +8,7 @@ export const HeaderContainer = styled(FlexBox)`
   padding: 0 20px;
   height: 70px;
   position: sticky;
+  z-index: 999;
   top: 0;
   left: 0;
 `;
@@ -30,6 +28,7 @@ export const OptionContainer = styled(FlexBox)`
     margin: 0 5px;
     cursor: pointer;
   }
+  align-items: center;
 `;
 
 export const Text = styled.div`
@@ -50,6 +49,7 @@ export const BeExpertContainer = styled(FlexBox)`
   height: 26px;
   border-radius: 9px;
   justify-content: space-between;
+  align-items: center;
   padding: 2px 5px;
   background-color: #0ecfff;
   color: white;
