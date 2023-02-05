@@ -33,9 +33,15 @@ import FeatureFourButtonHover from "public/icons/feature4_blue_icon.svg";
 import FeatureFiveButtonHover from "public/icons/feature5_blue_icon.svg";
 import FeatureSixButtonHover from "public/icons/feature6_blue_icon.svg";
 
+//utils
+import fakeDataUtils from "@/utils/fakeData";
+
 export default function VisitorTwo() {
   return (
     <SectionContainer>
+      {fakeDataUtils.getAllExpert().map((x) => (
+        <p>{x}</p>
+      ))}
       {/* 搜尋區 */}
       <SectionOneContainer>
         {/* 城市 */}
