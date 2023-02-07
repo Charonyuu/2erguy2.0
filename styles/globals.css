@@ -9,6 +9,10 @@
   font-family: 'Inter', sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 input:focus{
   outline: none;
 }

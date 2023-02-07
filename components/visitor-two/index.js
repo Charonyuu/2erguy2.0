@@ -39,9 +39,6 @@ import fakeDataUtils from "@/utils/fakeData";
 export default function VisitorTwo() {
   return (
     <SectionContainer>
-      {fakeDataUtils.getAllExpert().map((x) => (
-        <p>{x}</p>
-      ))}
       {/* 搜尋區 */}
       <SectionOneContainer>
         {/* 城市 */}
@@ -51,7 +48,7 @@ export default function VisitorTwo() {
             <FlexBox>
               <SectionInputBox width="100%">
                 <TitleSmall>城市</TitleSmall>
-                <SectionInput></SectionInput>
+                <SectionInput placeholder="輸入您想去的城市"></SectionInput>
               </SectionInputBox>
             </FlexBox>
           </SectionBox>
