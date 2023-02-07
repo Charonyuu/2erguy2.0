@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 //公用
 export const Overlay = styled.div`
   position: absolute;
@@ -26,7 +25,6 @@ export const BottomButton = styled.div`
 
 //section1
 
-
 export const SectionOneContainer = styled.div`
   img {
     width: 100%;
@@ -45,22 +43,38 @@ export const SectionOneBox = styled.div`
   }
   position: absolute;
   left: 200px;
-  top: 200px;
+  top: 150px;
+  height: 230px;
 `;
 
-export const SectionOneInput = styled.input`
+export const SectionOneInput = styled.div`
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.4);
   background-color: white;
+  cursor: pointer;
+  color: #adadad;
   width: 300px;
   height: 30px;
   padding: 5px;
+  padding-left: 10px;
   font-size: 14px;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+`;
+
+export const InputSelectedBox = styled.div`
+  background: #f5f5f5;
+  opacity: 0.9;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.160784);
+  width: 50px;
+  height: 25px;
+  font-size: 13px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 4px;
-  &::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #adadad;
-    opacity: 1; /* Firefox */
-  }
+  margin-top: 5px;
+  margin-right: 7.5px;
 `;
 
 export const SectionOneButton = styled.div`
@@ -76,7 +90,6 @@ export const SectionOneButton = styled.div`
   width: auto;
   padding: 0 10px;
 `;
-
 
 //section2
 export const VideoContainer = styled.div`
@@ -147,18 +160,18 @@ export const SectionFourCardText = styled.div`
   display: flex;
   align-items: center;
   color: #6f6f6f;
-  text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.501961);
+  font-weight: 500;
   width: 100%;
-  height: 30px;
+  height: 40px;
   padding-left: 20px;
 `;
 
 //section 5
 export const SectionFiveCard = styled.div`
-    width: 100%;
-    display: flex !important;
-    align-items: center;
-`
+  width: 100%;
+  display: flex !important;
+  align-items: center;
+`;
 
 //section 6
 export const SectionSixVideoContainer = styled.div`
