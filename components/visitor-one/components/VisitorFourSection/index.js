@@ -57,7 +57,7 @@ const VisitorFourSection = () => {
           {fakeJson.map((item, index) => (
             <FlexBox width="100%" justifyContent="center" key={index}>
               <SectionFourCard>
-                <FlexBox width="100%" height="250px">
+                <FlexBox width="100%" height="240px">
                   <CoverImg src={item.img} />
                 </FlexBox>
                 <SectionFourCardText>{item.name}</SectionFourCardText>
@@ -79,23 +79,23 @@ export default VisitorFourSection;
 
 const fakeJson = [
   {
-    name: "Jessie",
+    name: "台北",
     img: "https://imgs.gvm.com.tw/upload/gallery/oimg24/24479_01.jpg",
   },
   {
-    name: "Jessie",
+    name: "台北",
     img: "https://imgs.gvm.com.tw/upload/gallery/oimg24/24479_01.jpg",
   },
   {
-    name: "Jessie",
+    name: "台北",
     img: "https://imgs.gvm.com.tw/upload/gallery/oimg24/24479_01.jpg",
   },
   {
-    name: "Jessie",
+    name: "台北",
     img: "https://imgs.gvm.com.tw/upload/gallery/oimg24/24479_01.jpg",
   },
   {
-    name: "Jessie",
+    name: "台北",
     img: "https://imgs.gvm.com.tw/upload/gallery/oimg24/24479_01.jpg",
   },
 ];
