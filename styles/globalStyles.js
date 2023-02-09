@@ -12,7 +12,6 @@ import {
   typography,
 } from "styled-system";
 
-
 export const FlexBox = styled.div`
   display: flex;
   position: relative;
@@ -25,7 +24,8 @@ export const FlexBox = styled.div`
     color,
     border,
     boxShadow,
-    background
+    background,
+    typography
   )}
 `;
 
