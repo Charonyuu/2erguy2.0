@@ -17,6 +17,10 @@ import {
   CheckBoxInput,
   FeatureButton,
   SubmitButton,
+  PhotoBox,
+  Photo,
+  AuthenticateImg,
+  ButtonMore,
 } from "./styles";
 
 //icon
@@ -32,11 +36,15 @@ import FeatureThreeButtonHover from "public/icons/feature3_blue_icon.svg";
 import FeatureFourButtonHover from "public/icons/feature4_blue_icon.svg";
 import FeatureFiveButtonHover from "public/icons/feature5_blue_icon.svg";
 import FeatureSixButtonHover from "public/icons/feature6_blue_icon.svg";
+import StarIcon from "public/icons/starIcon.svg";
+import EyeIcon from "public/icons/eyeIcon.svg";
 
 //utils
 import fakeDataUtils from "@/utils/fakeData";
 
 export default function VisitorTwo() {
+  const allExpert = fakeDataUtils.getAllExpert();
+  console.log(allExpert);
   return (
     <SectionContainer>
       {/* 搜尋區 */}
@@ -181,7 +189,74 @@ export default function VisitorTwo() {
       {/* 分隔線 */}
       <SectionContainerDivider></SectionContainerDivider>
       {/* 在地達人清單 */}
-      <SectionTwoContainer></SectionTwoContainer>
+      <SectionTwoContainer>
+        <FlexBox justifyContent="center">
+          <TitleBig>符合你需求的在地達人</TitleBig>
+        </FlexBox>
+        {allExpert &&
+          allExpert.map((item, index) => (
+            <FlexBox key={index} justifyContent="space-between">
+              {/* 大頭照 */}
+              <FlexBox position="relative">
+                <PhotoBox>
+                  <Photo src={item.photo} alt="達人照片" />
+                </PhotoBox>
+                <AuthenticateImg>v</AuthenticateImg>
+              </FlexBox>
+              {/* 個人資訊 */}
+              <FlexBox
+                flexDirection="column"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <FlexBox>{item.nickName}</FlexBox>
+                <FlexBox alignItems="center" fontSize={14}>
+                  <StarIcon style={{ marginRight: "10px" }} />
+                  {item.evaluate}
+                </FlexBox>
+                <FlexBox alignItems="center" fontSize={14}>
+                  <EyeIcon style={{ marginRight: "10px" }} />
+                  {item.viewCount}
+                </FlexBox>
+                <FlexBox alignItems="center" fontSize={12} color="#5bd0fa">
+                  TWD
+                  <span style={{ fontSize: "14px", margin: "0 5px" }}>
+                    {item.price}
+                  </span>
+                  起
+                </FlexBox>
+                <ButtonMore>了解更多</ButtonMore>
+              </FlexBox>
+              {/* 個人資訊 */}
+              <FlexBox flexDirection="column" alignItems="flex-start">
+                <FlexBox>{/* album */}</FlexBox>
+                <FlexBox>
+                  {/* 0: 私房地圖 */}
+                  <FeatureOneButton />
+                  <FeatureOneButtonHover style={{ display: "none" }} />
+                  {/* 1: 美食夜市 */}
+                  <FeatureTwoButton />
+                  <FeatureTwoButtonHover style={{ display: "none" }} />
+                  {/* 2: 在地體驗 */}
+                  <FeatureThreeButton />
+                  <FeatureThreeButtonHover style={{ display: "none" }} />
+                  {/* 3: 代購服務 */}
+                  <FeatureFourButton />
+                  <FeatureFourButtonHover style={{ display: "none" }} />
+                  {/* 4: 咖啡交友 */}
+                  <FeatureFiveButton />
+                  <FeatureFiveButtonHover style={{ display: "none" }} />
+                  {/* 5: 接機代駕 */}
+                  <FeatureSixButton />
+                  <FeatureSixButtonHover style={{ display: "none" }} />
+                  {/* {item.services && item.services.map((service, index) => (
+                    
+                  ))} */}
+                </FlexBox>
+              </FlexBox>
+            </FlexBox>
+          ))}
+      </SectionTwoContainer>
     </SectionContainer>
   );
 }

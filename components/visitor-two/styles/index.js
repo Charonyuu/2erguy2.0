@@ -101,10 +101,47 @@ export const SectionContainerDivider = styled.div`
   height: 0;
   padding: 0px 100px;
   border: 1px solid #707070;
-  margin: 50px 0;
+  margin: 70px 0 20px 0;
 `;
 
 export const SectionTwoContainer = styled.div`
   background: #f6fbfb;
-  padding: 20px 100px;
+  padding: 20px 0;
+  align-items: flex-start;
+`;
+
+export const PhotoBox = styled.div`
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+`;
+
+export const Photo = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const AuthenticateImg = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #5bd0fa;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 50%;
+`;
+
+export const ButtonMore = styled.button`
+  width: 100%;
+  background: #f4a933;
+  color: #ffffff;
+  padding: 3px 0px;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
