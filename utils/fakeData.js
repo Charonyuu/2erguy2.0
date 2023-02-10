@@ -53,18 +53,18 @@ const fakeData = {
     return [
       {
         expertId: "E000000001",
-        nickName: "專家一",
+        nickName: "達人一",
         authenticate: true,
         photo: "fake/album.png",
         evaluate: 4.8,
         viewCount: 280,
         price: 1500,
-        albunm: ["fake/album.png", "fake/album.png", "fake/album.png"],
+        albunm: ["fake/album.png", "fake/album.png", "fake/album.png", "fake/album.png"],
         services: [0, 1, 2, 3, 4, 5],
       },
       {
         expertId: "E000000002",
-        nickName: "專家二",
+        nickName: "達人二",
         authenticate: false,
         photo: "fake/album.png",
         evaluate: 4.8,
@@ -75,7 +75,7 @@ const fakeData = {
       },
       {
         expertId: "E000000003",
-        nickName: "專家三",
+        nickName: "達人三",
         authenticate: true,
         photo: "fake/album.png",
         evaluate: 4.8,
