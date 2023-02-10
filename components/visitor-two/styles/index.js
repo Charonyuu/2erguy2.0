@@ -111,8 +111,8 @@ export const SectionTwoContainer = styled.div`
 `;
 
 export const PhotoBox = styled.div`
-  height: 120px;
-  width: 120px;
+  height: 140px;
+  width: 140px;
   border-radius: 50%;
   overflow: hidden;
 `;
@@ -126,7 +126,7 @@ export const Photo = styled.img`
 export const AuthenticateImg = styled.div`
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
   background: #5bd0fa;
   color: #ffffff;
   padding: 5px 10px;
@@ -144,4 +144,18 @@ export const ButtonMore = styled.button`
   &:hover {
     opacity: 0.8;
   }
+`;
+
+export const ServiceIcon = styled.img`
+  margin-right: 10px;
+`;
+
+export const AlbunmBox = styled.div`
+  width: 130px !important;
+  height: auto !important;
+`;
+
+export const Albunm = styled.img`
+  width: 100%;
+  height: auto;
 `;
