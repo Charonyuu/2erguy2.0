@@ -46,6 +46,20 @@ export const SectionInput = styled.input`
   padding: 0 10px;
   border: 1px solid #707070;
   border-radius: 8px;
+  ${compose(layout, border)}
+`;
+
+export const SectionInputDate = styled.div`
+  display: flex;
+  align-items: center;
+  height: 35px;
+  width: 100%;
+  padding: 0 10px;
+  border: 1px solid #707070;
+  font-size: 13px;
+  background: #ffffff;
+  cursor: pointer;
+  ${compose(border)}
 `;
 
 export const SectionSelect = styled.select`

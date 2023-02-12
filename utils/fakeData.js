@@ -59,7 +59,12 @@ const fakeData = {
         evaluate: 4.8,
         viewCount: 280,
         price: 1500,
-        albunm: ["fake/album.png", "fake/album.png", "fake/album.png", "fake/album.png"],
+        albunm: [
+          "fake/album.png",
+          "fake/album.png",
+          "fake/album.png",
+          "fake/album.png",
+        ],
         services: [0, 1, 2, 3, 4, 5],
       },
       {
@@ -81,7 +86,7 @@ const fakeData = {
         evaluate: 4.8,
         viewCount: 280,
         price: 1500,
-        albunm: ["fake/album.png", "fake/album.png", "fake/album.png"],
+        albunm: ["fake/album.png", "fake/album.png"],
         services: [0, 2, 4],
       },
     ];
