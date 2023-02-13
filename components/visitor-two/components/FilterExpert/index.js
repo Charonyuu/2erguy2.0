@@ -7,7 +7,8 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { zhTW } from "date-fns/locale";
 
-import ReactSlider from "react-slider";
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
 
 // style
 import { FlexBox } from "@/styles/globalStyles";
@@ -45,19 +46,25 @@ import changeDateFormatUtils from "@/utils/changeDateFormat";
 import useOutsideClickUtils from "@/utils/clickOutside";
 
 export default function FilterExpert() {
+  /**
+   * data
+   */
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  /** 是否顯示選擇日期套件跳窗 */
-  const [isShowDateRangePicker, setIsShowDateRangePicker] = useState(false);
-  /** 選擇日期 */
+  const [startTime, setStartTime] = useState("0");
+  const [endTime, setEndTime] = useState("24");
+  const [isShowDateRangePicker, setIsShowDateRangePicker] = useState(false); //是否顯示選擇日期套件跳窗
   const [dateRange, setDateRange] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
       key: "dateRangeKey",
     },
-  ]);
+  ]); //選擇日期
 
+  /**
+   * func
+   */
   /* 選擇日期-改變日期範圍 */
   const _changeDateRange = (dateRangeData) => {
     setDateRange([dateRangeData.dateRangeKey]);
@@ -70,7 +77,6 @@ export default function FilterExpert() {
       "yyyy-MM-dd",
       dateRangeData.dateRangeKey.endDate
     );
-
     setStartDate(startDate);
     setEndDate(endDate);
   };
@@ -84,6 +90,13 @@ export default function FilterExpert() {
     setIsShowDateRangePicker(false);
   }
   const dateRangePickerRef = useOutsideClickUtils(_closeDateRangePicker);
+
+  /* 選擇時間 */
+  const _changeTimeRange = (timeRange) => {
+    console.log(timeRange);
+    setStartTime(timeRange[0] / 4);
+    setEndTime(timeRange[1] / 4);
+  };
 
   return (
     <SectionOneContainer>
@@ -126,13 +139,20 @@ export default function FilterExpert() {
                   onClick={_clickDateInput}
                 >
                   {endDate ? (
-                    startDate
+                    endDate
                   ) : (
                     <p style={{ color: "#757575" }}>結束日期</p>
                   )}
                 </SectionInputDate>
                 {isShowDateRangePicker && (
-                  <FlexBox position="absolute" zIndex={1} top="35px">
+                  <FlexBox
+                    position="absolute"
+                    zIndex={1}
+                    top="40px"
+                    boxShadow={"1px 1px 6px #0000002b"}
+                    borderRadius={5}
+                    overflow="hidden"
+                  >
                     <DateRange
                       locale={zhTW}
                       ranges={dateRange}
@@ -155,10 +175,18 @@ export default function FilterExpert() {
             <SectionInputBox width="100%">
               <TitleSmall>
                 時間
-                <TimeRange>8點 - 17點</TimeRange>
+                <TimeRange>
+                  {startTime}點 - {endTime}點
+                </TimeRange>
               </TitleSmall>
-              <SectionInput></SectionInput>
-              <ReactSlider />
+              <RangeSlider
+                className={'sliderTrack'}
+                defaultValue={[0, 96]}
+                min={0}
+                max={96}
+                step={4}
+                onInput={_changeTimeRange}
+              />
             </SectionInputBox>
           </FlexBox>
         </SectionBox>
