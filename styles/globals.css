@@ -24,3 +24,28 @@ input:focus{
   display: flex !important;
   justify-content: center;
 }
+
+/** 遊客二－時間篩選滑塊*/
+.sliderTrack {
+  top: 5px;
+  height: 12px;
+  background: #ffffff !important;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  z-index: 0;
+}
+
+.sliderTrack .range-slider__thumb[data-lower],
+.sliderTrack .range-slider__thumb[data-upper] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #707070;
+  border-radius: 3px;
+  outline: none;
+}
+
+.sliderTrack .range-slider__range {
+  background: #00b6dd;
+}
