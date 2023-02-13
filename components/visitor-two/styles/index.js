@@ -93,10 +93,6 @@ export const FeatureButton = styled.button`
   }
 `;
 
-export const CheckBoxInput = styled.input`
-  display: none;
-`;
-
 export const SubmitButton = styled.button`
   font-weight: 400;
   color: #ffffff;

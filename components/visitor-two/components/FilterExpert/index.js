@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //plugin
 import { DateRange } from "react-date-range";
@@ -22,7 +22,6 @@ import {
   SectionInputDate,
   SectionSelect,
   TimeRange,
-  CheckBoxInput,
   FeatureButton,
   SubmitButton,
 } from "../../styles";
@@ -46,6 +45,15 @@ import changeDateFormatUtils from "@/utils/changeDateFormat";
 import useOutsideClickUtils from "@/utils/clickOutside";
 
 export default function FilterExpert() {
+  const iconList = [
+    { normal: <FeatureOneButton />, hover: <FeatureOneButtonHover /> },
+    { normal: <FeatureTwoButton />, hover: <FeatureTwoButtonHover /> },
+    { normal: <FeatureThreeButton />, hover: <FeatureThreeButtonHover /> },
+    { normal: <FeatureFourButton />, hover: <FeatureFourButtonHover /> },
+    { normal: <FeatureFiveButton />, hover: <FeatureFiveButtonHover /> },
+    { normal: <FeatureSixButton />, hover: <FeatureSixButtonHover /> },
+  ];
+  
   /**
    * data
    */
@@ -61,6 +69,7 @@ export default function FilterExpert() {
       key: "dateRangeKey",
     },
   ]); //選擇日期
+  const [selectedService, setSelectedService] = useState([]);
 
   /**
    * func
@@ -96,6 +105,17 @@ export default function FilterExpert() {
     console.log(timeRange);
     setStartTime(timeRange[0] / 4);
     setEndTime(timeRange[1] / 4);
+  };
+
+  /** 選擇服務 */
+  const _selectService = (EService) => {
+    if (selectedService.includes(EService)) {
+      let temp = [...selectedService];
+      temp = temp.filter((x) => x !== EService);
+      setSelectedService(temp);
+    } else {
+      setSelectedService((preValue) => [...preValue, EService]);
+    }
   };
 
   return (
@@ -180,7 +200,7 @@ export default function FilterExpert() {
                 </TimeRange>
               </TitleSmall>
               <RangeSlider
-                className={'sliderTrack'}
+                className={"sliderTrack"}
                 defaultValue={[0, 96]}
                 min={0}
                 max={96}
@@ -239,48 +259,19 @@ export default function FilterExpert() {
       <FlexBox flexDirection="column" alignItems="center" mb="20px">
         <TitleBig>點選您需要的服務</TitleBig>
         <FlexBox width="70%" justifyContent="space-between" m="20px 0">
-          <label>
-            <CheckBoxInput type="checkbox" value="私房地圖" />
-            <FeatureButton>
-              <FeatureOneButton />
-              <FeatureOneButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="美食景點" />
-            <FeatureButton>
-              <FeatureTwoButton />
-              <FeatureTwoButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="在地體驗" />
-            <FeatureButton>
-              <FeatureThreeButton />
-              <FeatureThreeButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="代購服務" />
-            <FeatureButton>
-              <FeatureFourButton />
-              <FeatureFourButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="咖啡交友" />
-            <FeatureButton>
-              <FeatureFiveButton />
-              <FeatureFiveButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="接機代駕" />
-            <FeatureButton>
-              <FeatureSixButton />
-              <FeatureSixButtonHover />
-            </FeatureButton>
-          </label>
+          {/* 私房地圖 */}
+          {iconList.map((icon, index) => (
+            <label onClick={() => _selectService(index)}>
+              <FeatureButton>
+                {selectedService.includes(index) ? (
+                  <>{icon.hover}</>
+                ) : (
+                  <>{icon.normal}</>
+                )}
+                <>{icon.hover}</>
+              </FeatureButton>
+            </label>
+          ))}
         </FlexBox>
       </FlexBox>
       {/*  送出按鈕 */}
