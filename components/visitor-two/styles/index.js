@@ -40,13 +40,33 @@ export const SectionInputBox = styled.div`
   ${compose(layout)}
 `;
 
-export const SectionInput = styled.input`
+export const SectionInput = styled.div`
   height: 35px;
   width: 100%;
   padding: 0 10px;
   border: 1px solid #707070;
   border-radius: 8px;
+  font-size: 13px;
+  background: #ffffff;
+  cursor: pointer;
+  position: relative;
   ${compose(layout, border)}
+`;
+
+export const InputSelectedBox = styled.div`
+  background: #f5f5f5;
+  opacity: 0.9;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.160784);
+  width: 50px;
+  height: 25px;
+  font-size: 13px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-right: 7.5px;
 `;
 
 export const SectionInputDate = styled.div`
