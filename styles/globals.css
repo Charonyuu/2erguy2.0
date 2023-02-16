@@ -25,6 +25,11 @@ input:focus{
   justify-content: center;
 }
 
+/** 遊客二－專家清單 */ 
+.slick-slider.expert-album .slick-track {
+  width: auto !important;
+}
+
 /** 遊客二－時間篩選滑塊*/
 .sliderTrack {
   top: 5px;

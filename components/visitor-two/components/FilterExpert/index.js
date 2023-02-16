@@ -24,6 +24,7 @@ import {
   SectionSelect,
   TimeRange,
   FeatureButton,
+  ServiceIconButton,
   SubmitButton,
 } from "../../styles";
 
@@ -46,6 +47,7 @@ import FeatureSixButtonHover from "public/icons/feature6_blue_icon.svg";
 import fakeDataUtils from "@/utils/fakeData";
 import changeDateFormatUtils from "@/utils/changeDateFormat";
 import useOutsideClickUtils from "@/utils/clickOutside";
+import windowSizeUtils from "@/utils/windowSize";
 
 export default function FilterExpert() {
   /**
@@ -100,6 +102,8 @@ export default function FilterExpert() {
       return x.area === selectCityInput.area;
     });
   const cityList = selectCityInput.area && getDistinctCity[0].city;
+  //瀏覽器寬度
+  const windowSize = windowSizeUtils();
 
   /**
    * func
@@ -188,7 +192,7 @@ export default function FilterExpert() {
   return (
     <SectionOneContainer>
       {/* 城市 */}
-      <FlexBox justifyContent="space-between" mb="20px">
+      <FlexBox justifyContent="space-between">
         <SectionBox>
           <TitleBig>你想去哪？</TitleBig>
           <FlexBox>
@@ -298,12 +302,12 @@ export default function FilterExpert() {
         </SectionBox>
       </FlexBox>
       {/* 日期與時間 & 在地達人類型*/}
-      <FlexBox justifyContent="space-between" mb="20px">
+      <FlexBox justifyContent="space-between" flexWrap="wrap" mb="20px">
         {/* 日期與時間 */}
         <SectionBox>
           <TitleBig>日期與時間</TitleBig>
-          <FlexBox justifyContent="space-between">
-            <SectionInputBox width="78%">
+          <FlexBox justifyContent="space-between" flexWrap="wrap">
+            <SectionInputBox width={windowSize.width <= 768 ? "100%" : "68%"}>
               <TitleSmall>日期</TitleSmall>
               <FlexBox position="relative" ref={dateRangePickerRef}>
                 <SectionInputDate
@@ -349,7 +353,7 @@ export default function FilterExpert() {
                 )}
               </FlexBox>
             </SectionInputBox>
-            <SectionInputBox width="20%">
+            <SectionInputBox width={windowSize.width <= 768 ? "100%" : "30%"}>
               <TitleSmall>人數</TitleSmall>
               <SectionSelect name="人數">
                 <option value="">待確認</option>
@@ -376,42 +380,46 @@ export default function FilterExpert() {
           </FlexBox>
         </SectionBox>
         {/* 在地達人類型 */}
-        <SectionBox>
+        <SectionBox
+          style={{
+            marginTop: windowSize.width <= 1024 && "30px",
+          }}
+        >
           <TitleBig>在地達人類型</TitleBig>
-          <FlexBox justifyContent="space-between">
-            <SectionInputBox width="32%">
+          <FlexBox justifyContent="space-between" flexWrap="wrap">
+            <SectionInputBox width={windowSize.width <= 768 ? "100%" : "32%"}>
               <TitleSmall>性別</TitleSmall>
               <SectionSelect name="性別">
                 <option value="">待確認</option>
               </SectionSelect>
             </SectionInputBox>
-            <SectionInputBox width="32%">
+            <SectionInputBox width={windowSize.width <= 768 ? "100%" : "32%"}>
               <TitleSmall>年齡</TitleSmall>
               <SectionSelect name="年齡">
                 <option value="">待確認</option>
               </SectionSelect>
             </SectionInputBox>
-            <SectionInputBox width="32%">
+            <SectionInputBox width={windowSize.width <= 768 ? "100%" : "32%"}>
               <TitleSmall>語言</TitleSmall>
               <SectionSelect name="語言">
                 <option value="">待確認</option>
               </SectionSelect>
             </SectionInputBox>
           </FlexBox>
-          <FlexBox justifyContent="space-between">
-            <SectionInputBox width="32%">
+          <FlexBox justifyContent="space-between" flexWrap="wrap">
+            <SectionInputBox width={windowSize.width <= 768 ? "100%" : "32%"}>
               <TitleSmall>價格</TitleSmall>
               <SectionSelect name="價格">
                 <option value="">待確認</option>
               </SectionSelect>
             </SectionInputBox>
-            <SectionInputBox width="32%">
+            <SectionInputBox width={windowSize.width <= 768 ? "100%" : "32%"}>
               <TitleSmall>瀏覽數</TitleSmall>
               <SectionSelect name="瀏覽數">
                 <option value="">待確認</option>
               </SectionSelect>
             </SectionInputBox>
-            <SectionInputBox width="32%">
+            <SectionInputBox width={windowSize.width <= 768 ? "100%" : "32%"}>
               <TitleSmall>評價</TitleSmall>
               <SectionSelect name="評價">
                 <option value="">請選擇</option>
@@ -425,10 +433,17 @@ export default function FilterExpert() {
       {/*  點選您需要的服務 */}
       <FlexBox flexDirection="column" alignItems="center" mb="20px">
         <TitleBig>點選您需要的服務</TitleBig>
-        <FlexBox width="70%" justifyContent="space-between" m="20px 0">
-          {/* 私房地圖 */}
+        <FlexBox
+          width={"100%"}
+          justifyContent="center"
+          m="20px 0"
+          flexWrap="wrap"
+        >
           {iconList.map((icon, index) => (
-            <label onClick={() => _selectService(index)}>
+            <ServiceIconButton
+              key={index}
+              onClick={() => _selectService(index)}
+            >
               <FeatureButton>
                 {selectedService.includes(index) ? (
                   <>{icon.hover}</>
@@ -437,7 +452,7 @@ export default function FilterExpert() {
                 )}
                 <>{icon.hover}</>
               </FeatureButton>
-            </label>
+            </ServiceIconButton>
           ))}
         </FlexBox>
       </FlexBox>
