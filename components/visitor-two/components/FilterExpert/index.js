@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //plugin
 import { DateRange } from "react-date-range";
@@ -11,7 +11,7 @@ import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 
 // style
-import { FlexBox } from "@/styles/globalStyles";
+import { FlexBox, StyledText } from "@/styles/globalStyles";
 import {
   SectionOneContainer,
   SectionBox,
@@ -19,10 +19,10 @@ import {
   TitleSmall,
   SectionInputBox,
   SectionInput,
+  InputSelectedBox,
   SectionInputDate,
   SectionSelect,
   TimeRange,
-  CheckBoxInput,
   FeatureButton,
   SubmitButton,
 } from "../../styles";
@@ -42,6 +42,8 @@ import FeatureFourButtonHover from "public/icons/feature4_blue_icon.svg";
 import FeatureFiveButtonHover from "public/icons/feature5_blue_icon.svg";
 import FeatureSixButtonHover from "public/icons/feature6_blue_icon.svg";
 
+//utils
+import fakeDataUtils from "@/utils/fakeData";
 import changeDateFormatUtils from "@/utils/changeDateFormat";
 import useOutsideClickUtils from "@/utils/clickOutside";
 
@@ -49,22 +51,95 @@ export default function FilterExpert() {
   /**
    * data
    */
+  const iconList = [
+    { normal: <FeatureOneButton />, hover: <FeatureOneButtonHover /> },
+    { normal: <FeatureTwoButton />, hover: <FeatureTwoButtonHover /> },
+    { normal: <FeatureThreeButton />, hover: <FeatureThreeButtonHover /> },
+    { normal: <FeatureFourButton />, hover: <FeatureFourButtonHover /> },
+    { normal: <FeatureFiveButton />, hover: <FeatureFiveButtonHover /> },
+    { normal: <FeatureSixButton />, hover: <FeatureSixButtonHover /> },
+  ];
+  const [isShowCityOption, setIsShowCityOption] = useState();
+  const [selectCityInput, setSelectCityInput] = useState({
+    country: "",
+    area: "",
+    city: "",
+  });
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [startTime, setStartTime] = useState("0");
   const [endTime, setEndTime] = useState("24");
-  const [isShowDateRangePicker, setIsShowDateRangePicker] = useState(false); //是否顯示選擇日期套件跳窗
+  //是否顯示選擇日期套件跳窗
+  const [isShowDateRangePicker, setIsShowDateRangePicker] = useState(false);
+  //選擇日期
   const [dateRange, setDateRange] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
       key: "dateRangeKey",
     },
-  ]); //選擇日期
+  ]);
+  //選擇哪些服務
+  const [selectedService, setSelectedService] = useState([]);
+  //取得國家、區域、城市
+  const searchFakeData = fakeDataUtils.searchForCity();
+  const countryList = searchFakeData.map((x) => {
+    return x.country;
+  });
+  const getCountryDistinct = searchFakeData.filter((x) => {
+    return x.country == selectCityInput.country;
+  });
+  const areaList =
+    selectCityInput.country &&
+    getCountryDistinct[0].distinct.map((x) => {
+      return x.area;
+    });
+  const getDistinctCity =
+    selectCityInput.area &&
+    getCountryDistinct[0].distinct.filter((x) => {
+      return x.area === selectCityInput.area;
+    });
+  const cityList = selectCityInput.area && getDistinctCity[0].city;
 
   /**
    * func
    */
+  /* 設定城市下拉式選單 */
+  const _setCity = (key, value) => {
+    if (key === "country" && value !== selectCityInput.country)
+      return setSelectCityInput({ country: value, area: "", city: "" });
+    if (key === "area" && value !== selectCityInput.area)
+      return setSelectCityInput({ ...selectCityInput, [key]: value, city: "" });
+
+    setSelectCityInput({ ...selectCityInput, [key]: value });
+  };
+
+  /* 選擇城市欄位要顯示的內容 */
+  const InputValue = () => {
+    if (selectCityInput.city)
+      return (
+        selectCityInput.country +
+        " " +
+        selectCityInput.area +
+        " " +
+        selectCityInput.city
+      );
+    if (selectCityInput.area)
+      return selectCityInput.country + " " + selectCityInput.area;
+    if (selectCityInput.country) return selectCityInput.country;
+    return "選擇您想去的城市";
+  };
+
+  useEffect(() => {
+    if (isShowCityOption) return;
+  }, [isShowCityOption]);
+
+  /* 關閉選擇城市下拉式選單跳窗 */
+  const _closeSelectCityDialog = () => {
+    setIsShowCityOption(false);
+  };
+  const selectCityRef = useOutsideClickUtils(_closeSelectCityDialog);
+
   /* 選擇日期-改變日期範圍 */
   const _changeDateRange = (dateRangeData) => {
     setDateRange([dateRangeData.dateRangeKey]);
@@ -85,6 +160,7 @@ export default function FilterExpert() {
   const _clickDateInput = () => {
     setIsShowDateRangePicker(true);
   };
+
   /* 點擊任意處關閉選擇日期套件跳窗 */
   function _closeDateRangePicker() {
     setIsShowDateRangePicker(false);
@@ -98,6 +174,17 @@ export default function FilterExpert() {
     setEndTime(timeRange[1] / 4);
   };
 
+  /** 選擇服務 */
+  const _selectService = (EService) => {
+    if (selectedService.includes(EService)) {
+      let temp = [...selectedService];
+      temp = temp.filter((x) => x !== EService);
+      setSelectedService(temp);
+    } else {
+      setSelectedService((preValue) => [...preValue, EService]);
+    }
+  };
+
   return (
     <SectionOneContainer>
       {/* 城市 */}
@@ -107,7 +194,105 @@ export default function FilterExpert() {
           <FlexBox>
             <SectionInputBox width="100%">
               <TitleSmall>城市</TitleSmall>
-              <SectionInput placeholder="輸入您想去的城市"></SectionInput>
+              <FlexBox ref={selectCityRef} margin="10px 0 20px">
+                <SectionInput>
+                  {/* 選擇城市欄位 */}
+                  <StyledText
+                    display={"flex"}
+                    alignItems={"center"}
+                    width={1}
+                    height={"100%"}
+                    style={{
+                      color: selectCityInput.country
+                        ? "black"
+                        : "rgb(117, 117, 117)",
+                    }}
+                    onClick={() => {
+                      isShowCityOption
+                        ? _closeSelectCityDialog()
+                        : setIsShowCityOption(true);
+                    }}
+                  >
+                    <InputValue />
+                  </StyledText>
+                  {/* 選擇城市下拉式選單 */}
+                  {isShowCityOption ? (
+                    <FlexBox
+                      bg="rgba(255,255,255)"
+                      position="absolute"
+                      bottom="-5px"
+                      left="0"
+                      minHeight="100px"
+                      width={1}
+                      flexDirection="column"
+                      style={{ transform: "translateY(100%)", zIndex: 2 }}
+                      p="0px 15px"
+                      boxShadow={"1px 1px 6px #0000002b"}
+                      borderRadius={5}
+                    >
+                      {/* 國家 */}
+                      <FlexBox margin="10px 0">
+                        {isShowCityOption &&
+                          countryList.map((country, index) => (
+                            <InputSelectedBox
+                              style={{
+                                backgroundColor:
+                                  selectCityInput.country === country
+                                    ? "#0ECFFF"
+                                    : null,
+                              }}
+                              onClick={() => _setCity("country", country)}
+                            >
+                              {country}
+                            </InputSelectedBox>
+                          ))}
+                      </FlexBox>
+                      {/* 區域 */}
+                      <FlexBox
+                        width="100%"
+                        margin="10px 0"
+                        style={{ flexWrap: "wrap" }}
+                      >
+                        {selectCityInput.country &&
+                          areaList.map((area, index) => (
+                            <InputSelectedBox
+                              style={{
+                                backgroundColor:
+                                  selectCityInput.area === area
+                                    ? "#0ECFFF"
+                                    : null,
+                              }}
+                              onClick={() => _setCity("area", area)}
+                            >
+                              {area}
+                            </InputSelectedBox>
+                          ))}
+                      </FlexBox>
+                      {/* 城市 */}
+                      <FlexBox
+                        width="100%"
+                        margin="10px 0"
+                        style={{ flexWrap: "wrap" }}
+                      >
+                        {selectCityInput.area &&
+                          cityList.map((city, index) => (
+                            <InputSelectedBox
+                              style={{
+                                backgroundColor:
+                                  selectCityInput.city === city
+                                    ? "#0ECFFF"
+                                    : null,
+                              }}
+                              onClick={() => _setCity("city", city)}
+                            >
+                              {city}
+                            </InputSelectedBox>
+                          ))}
+                      </FlexBox>
+                    </FlexBox>
+                  ) : null}
+                </SectionInput>
+              </FlexBox>
             </SectionInputBox>
           </FlexBox>
         </SectionBox>
@@ -180,7 +365,7 @@ export default function FilterExpert() {
                 </TimeRange>
               </TitleSmall>
               <RangeSlider
-                className={'sliderTrack'}
+                className={"sliderTrack"}
                 defaultValue={[0, 96]}
                 min={0}
                 max={96}
@@ -229,7 +414,9 @@ export default function FilterExpert() {
             <SectionInputBox width="32%">
               <TitleSmall>評價</TitleSmall>
               <SectionSelect name="評價">
-                <option value="">待確認</option>
+                <option value="">請選擇</option>
+                <option value="">由低到高</option>
+                <option value="">由高到低</option>
               </SectionSelect>
             </SectionInputBox>
           </FlexBox>
@@ -239,48 +426,19 @@ export default function FilterExpert() {
       <FlexBox flexDirection="column" alignItems="center" mb="20px">
         <TitleBig>點選您需要的服務</TitleBig>
         <FlexBox width="70%" justifyContent="space-between" m="20px 0">
-          <label>
-            <CheckBoxInput type="checkbox" value="私房地圖" />
-            <FeatureButton>
-              <FeatureOneButton />
-              <FeatureOneButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="美食景點" />
-            <FeatureButton>
-              <FeatureTwoButton />
-              <FeatureTwoButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="在地體驗" />
-            <FeatureButton>
-              <FeatureThreeButton />
-              <FeatureThreeButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="代購服務" />
-            <FeatureButton>
-              <FeatureFourButton />
-              <FeatureFourButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="咖啡交友" />
-            <FeatureButton>
-              <FeatureFiveButton />
-              <FeatureFiveButtonHover />
-            </FeatureButton>
-          </label>
-          <label>
-            <CheckBoxInput type="checkbox" value="接機代駕" />
-            <FeatureButton>
-              <FeatureSixButton />
-              <FeatureSixButtonHover />
-            </FeatureButton>
-          </label>
+          {/* 私房地圖 */}
+          {iconList.map((icon, index) => (
+            <label onClick={() => _selectService(index)}>
+              <FeatureButton>
+                {selectedService.includes(index) ? (
+                  <>{icon.hover}</>
+                ) : (
+                  <>{icon.normal}</>
+                )}
+                <>{icon.hover}</>
+              </FeatureButton>
+            </label>
+          ))}
         </FlexBox>
       </FlexBox>
       {/*  送出按鈕 */}

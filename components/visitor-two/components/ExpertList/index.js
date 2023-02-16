@@ -74,44 +74,10 @@ export default function ExpertList() {
   /** 取得達人有哪些服務 */
   const _getServiceIcon = (EService, services) => {
     let isIncludesService = services.includes(EService);
-
-    switch (EService) {
-      /* 私房地圖 */
-      case 0:
-        return isIncludesService
-          ? "icons/feature1_notext_blue_icon.svg"
-          : "icons/feature1_notext_icon.svg";
-
-      /* 美食景點 */
-      case 1:
-        return isIncludesService
-          ? "icons/feature2_notext_blue_icon.svg"
-          : "icons/feature2_notext_icon.svg";
-
-      /* 在地體驗 */
-      case 2:
-        return isIncludesService
-          ? "icons/feature3_notext_blue_icon.svg"
-          : "icons/feature3_notext_icon.svg";
-
-      /* 代購服務 */
-      case 3:
-        return isIncludesService
-          ? "icons/feature4_notext_blue_icon.svg"
-          : "icons/feature4_notext_icon.svg";
-
-      /* 咖啡交友 */
-      case 4:
-        return isIncludesService
-          ? "icons/feature5_notext_blue_icon.svg"
-          : "icons/feature5_notext_icon.svg";
-
-      /* 接機代駕 */
-      case 5:
-        return isIncludesService
-          ? "icons/feature6_notext_blue_icon.svg"
-          : "icons/feature6_notext_icon.svg";
-    }
+    /* 檔名 */
+    return `icons/feature${EService + 1}_notext_${
+      isIncludesService ? "blue_" : ""
+    }icon.svg`;
   };
 
   return (
