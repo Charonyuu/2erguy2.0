@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import {
+  MEDIA_QUERY_426,
+  MEDIA_QUERY_768,
+  MEDIA_QUERY_1024,
+} from "../../../styles/constants/media";
 
 import {
   background,
@@ -16,6 +21,16 @@ import {
 export const SectionContainer = styled.div`
   background: #f6fbfb;
   padding: 20px 100px;
+
+  ${MEDIA_QUERY_768} {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  ${MEDIA_QUERY_426} {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 `;
 
 export const SectionOneContainer = styled.div``;
@@ -34,6 +49,10 @@ export const TitleSmall = styled.div`
 export const SectionBox = styled.div`
   width: 48%;
   ${compose(layout)}
+
+  ${MEDIA_QUERY_1024} {
+    width: 100%;
+  }
 `;
 
 export const SectionInputBox = styled.div`
@@ -99,6 +118,7 @@ export const FeatureButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  margin: 0 9px;
 
   svg:nth-child(2) {
     display: none;
@@ -110,6 +130,26 @@ export const FeatureButton = styled.button`
 
   &:hover svg:nth-child(2) {
     display: block;
+  }
+
+  ${MEDIA_QUERY_1024} {
+    scale: 0.9;
+  }
+
+  ${MEDIA_QUERY_768} {
+    scale: 0.8;
+  }
+`;
+
+export const ServiceIconButton = styled.label`
+  ${MEDIA_QUERY_768} {
+    /* 一排三個 */
+    flex: 1;
+    width: 33.3%;
+    min-width: 33.3%;
+    max-width: 33.3%;
+    display: flex;
+    justify-content: center;
   }
 `;
 
@@ -178,6 +218,11 @@ export const ButtonMore = styled.button`
 
 export const ServiceIcon = styled.img`
   margin-right: 10px;
+`;
+
+//佔位
+export const ServiceIconBox = styled.div`
+  width: 13%;
 `;
 
 export const AlbunmBox = styled.div`

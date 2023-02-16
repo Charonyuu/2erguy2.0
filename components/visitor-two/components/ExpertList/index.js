@@ -13,6 +13,7 @@ import {
   AuthenticateImg,
   ButtonMore,
   ServiceIcon,
+  ServiceIconBox,
   AlbunmBox,
   Albunm,
 } from "../../styles";
@@ -93,42 +94,45 @@ export default function ExpertList() {
             borderBottom={"1px solid #707070"}
             p="40px 0"
           >
-            {/* 大頭照 */}
-            <FlexBox position="relative">
-              <PhotoBox>
-                <Photo src={item.photo} alt="達人照片" />
-              </PhotoBox>
-              <AuthenticateImg>v</AuthenticateImg>
-            </FlexBox>
-            {/* 個人資訊 */}
-            <FlexBox
-              flexDirection="column"
-              justifyContent="space-between"
-              alignItems="start"
-            >
-              <FlexBox fontWeight="bold">{item.nickName}</FlexBox>
-              <FlexBox alignItems="center" fontSize={14}>
-                <StarIcon style={{ marginRight: "10px" }} />
-                {item.evaluate}
+            <FlexBox>
+              {/* 大頭照 */}
+              <FlexBox>
+                <PhotoBox>
+                  <Photo src={item.photo} alt="達人照片" />
+                </PhotoBox>
+                <AuthenticateImg>v</AuthenticateImg>
               </FlexBox>
-              <FlexBox alignItems="center" fontSize={14}>
-                <EyeIcon style={{ marginRight: "10px" }} />
-                {item.viewCount}
+              {/* 個人資訊 */}
+              <FlexBox
+                flexDirection="column"
+                justifyContent="space-between"
+                alignItems="start"
+                m="0 0 0 35px"
+              >
+                <FlexBox fontWeight="bold">{item.nickName}</FlexBox>
+                <FlexBox alignItems="center" fontSize={14}>
+                  <StarIcon style={{ marginRight: "10px" }} />
+                  {item.evaluate}
+                </FlexBox>
+                <FlexBox alignItems="center" fontSize={14}>
+                  <EyeIcon style={{ marginRight: "10px" }} />
+                  {item.viewCount}
+                </FlexBox>
+                <FlexBox alignItems="center" fontSize={12} color="#5bd0fa">
+                  TWD
+                  <span
+                    style={{
+                      fontSize: "14px",
+                      margin: "0 5px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {item.price}
+                  </span>
+                  起
+                </FlexBox>
+                <ButtonMore>了解更多</ButtonMore>
               </FlexBox>
-              <FlexBox alignItems="center" fontSize={12} color="#5bd0fa">
-                TWD
-                <span
-                  style={{
-                    fontSize: "14px",
-                    margin: "0 5px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {item.price}
-                </span>
-                起
-              </FlexBox>
-              <ButtonMore>了解更多</ButtonMore>
             </FlexBox>
             {/* 相簿 & 服務 */}
             <FlexBox
@@ -137,7 +141,10 @@ export default function ExpertList() {
               width={"70%"}
             >
               <FlexBox width={"100%"}>
-                <Slider {...sliderSettings}>
+                <Slider
+                  className={item.albunm.length < 3 && "expert-album"}
+                  {...sliderSettings}
+                >
                   {item.albunm.map((item, index) => (
                     <AlbunmBox key={index}>
                       <Albunm src={item} alt="達人相簿" />
@@ -151,7 +158,7 @@ export default function ExpertList() {
                 m={"10px 0 0 0"}
               >
                 {/* 卡位 */}
-                <div style={{ width: "10%" }}></div>
+                <ServiceIconBox></ServiceIconBox>
                 <FlexBox width={"100%"}>
                   {/* 0: 私房地圖 */}
                   <ServiceIcon src={_getServiceIcon(0, item.services)} />
