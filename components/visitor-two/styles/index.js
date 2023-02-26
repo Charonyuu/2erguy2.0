@@ -18,9 +18,11 @@ import {
   typography,
 } from "styled-system";
 
+//filterExpert
+
 export const SectionContainer = styled.div`
   background: #f6fbfb;
-  padding: 20px 100px;
+  padding: 80px 100px 20px 100px;
 
   ${MEDIA_QUERY_768} {
     padding-left: 60px;
@@ -167,12 +169,16 @@ export const SubmitButton = styled.button`
   }
 `;
 
+//分隔線
+
 export const SectionContainerDivider = styled.div`
   height: 0;
   padding: 0px 100px;
   border: 1px solid #707070;
   margin: 70px 0 20px 0;
 `;
+
+//expertList
 
 export const SectionTwoContainer = styled.div`
   background: #f6fbfb;

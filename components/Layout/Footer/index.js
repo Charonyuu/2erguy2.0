@@ -5,6 +5,7 @@ import {
   CopyRightContatiner,
   Text,
   LeftFooterContainer,
+  Divider,
   RightFooterContainer,
   FooterLine,
   IconContainer,
@@ -22,7 +23,7 @@ export default function Footer() {
     <FooterContainer>
       <FooterOptionContainer>
         <LeftFooterContainer>
-          <JoinUs>Join Us On</JoinUs>
+          <JoinUs cursor>Join Us On</JoinUs>
           <IconContainer>
             <FacebookIcon />
             <IgIcon />
@@ -30,9 +31,10 @@ export default function Footer() {
             <WeiboIcon />
           </IconContainer>
         </LeftFooterContainer>
+        <Divider></Divider>
         <RightFooterContainer>
           <FooterLine>
-            <Text white Size="18px">
+            <Text white cursor Size="18px">
               公司資訊
             </Text>
             <Text white>關於我們</Text>
@@ -40,7 +42,7 @@ export default function Footer() {
             <Text white>聯繫方式</Text>
           </FooterLine>
           <FooterLine>
-            <Text white Size="18px">
+            <Text white cursor Size="18px">
               網站條款
             </Text>
             <Text white>操作協助</Text>
@@ -51,7 +53,7 @@ export default function Footer() {
             <Text white>付款說明</Text>
           </FooterLine>
           <FooterLine>
-            <Text white Size="18px">
+            <Text white cursor Size="18px">
               時間共享
             </Text>
             <Text white>時間共享</Text>
@@ -61,10 +63,10 @@ export default function Footer() {
         </RightFooterContainer>
       </FooterOptionContainer>
       <CopyRightContatiner>
-        <Text white Size="18px">
+        <Text white cursor Size="18px">
           本平台僅提供媒合功能，各在地達人之資格與服務內容，須符合當地政府規定。
         </Text>
-        <Text white>© 2020 tour guide All rights reserved.</Text>
+        <Text white cursor>© 2020 tour guide All rights reserved.</Text>
       </CopyRightContatiner>
     </FooterContainer>
   );
