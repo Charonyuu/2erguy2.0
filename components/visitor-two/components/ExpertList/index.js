@@ -1,10 +1,11 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // style
-import { FlexBox } from "@/styles/globalStyles";
+import { FlexBox, StyledText, CoverImg } from "@/styles/globalStyles";
 import {
   SectionTwoContainer,
   TitleBig,
@@ -16,6 +17,9 @@ import {
   ServiceIconBox,
   AlbunmBox,
   Albunm,
+  SectionThirdCard,
+  SectionThirdContent,
+  PageBox,
 } from "../../styles";
 
 //icon
@@ -25,12 +29,36 @@ import BlueRightArrow from "public/icons/blueRightArrow.svg";
 
 //utils
 import fakeDataUtils from "@/utils/fakeData";
+import windowSizeUtils from "@/utils/windowSize";
 
 export default function ExpertList() {
-  /** 取得所有的達人 */
+  /**
+   * data
+   */
+  /* 取得所有的達人 */
   const allExpert = fakeDataUtils.getAllExpert();
+  const allExpertRwd = fakeDataUtils.getAllExpertRwd();
+  /* 瀏覽器寬度 */
+  const windowSize = windowSizeUtils();
+  /* 頁數 */
+  const [pageCounts, setPageCounts] = useState([]);
+  const [activePageIndex, setActivePageIndex] = useState(0);
 
-  /** 輪播 */
+  useEffect(() => {
+    const pageCounts = [];
+    const pageCountsLength =
+      allExpert.length % 10 === 0
+        ? allExpert.length / 10
+        : Math.trunc(allExpert.length / 10) + 1;
+    for (let i = 0; i < pageCountsLength; i++) {
+      pageCounts.push(i + 1);
+    }
+    setPageCounts(pageCounts);
+  }, []);
+
+  /**
+   * func
+   */
   /* 輪播-上一個箭頭 */
   const PrevArrow = ({ onClick }) => {
     return (
@@ -72,7 +100,7 @@ export default function ExpertList() {
     prevArrow: <PrevArrow />,
   };
 
-  /** 取得達人有哪些服務 */
+  /* 取得達人有哪些服務 */
   const _getServiceIcon = (EService, services) => {
     let isIncludesService = services.includes(EService);
     /* 檔名 */
@@ -86,12 +114,12 @@ export default function ExpertList() {
       <FlexBox justifyContent="center">
         <TitleBig>符合你需求的在地達人</TitleBig>
       </FlexBox>
-      {allExpert.length &&
+      {allExpert.length && windowSize.width > 1024 ? (
         allExpert.map((item, index) => (
           <FlexBox
             key={index}
             justifyContent="space-between"
-            borderBottom={"1px solid #707070"}
+            borderBottom={allExpert.length - 1 > index && "1px solid #707070"}
             p="40px 0"
           >
             <FlexBox>
@@ -176,7 +204,102 @@ export default function ExpertList() {
               </FlexBox>
             </FlexBox>
           </FlexBox>
-        ))}
+        ))
+      ) : (
+        <FlexBox justifyContent="space-between" p="40px 0" flexWrap="wrap">
+          {allExpertRwd.map((item, index) => (
+            <SectionThirdCard
+              key={index}
+              width={windowSize.width <= 520 ? "100%" : "45%"}
+              minWidth={windowSize.width <= 520 ? "100%" : "45%"}
+              maxWidth={windowSize.width <= 520 ? "100%" : "45%"}
+            >
+              <FlexBox width="100%" height="90px" mb="30px">
+                <CoverImg src={item.bg} />
+                <FlexBox
+                  position="absolute"
+                  bottom="0"
+                  width={60}
+                  height={60}
+                  borderRadius="50%"
+                  left="20px"
+                  overflow="hidden"
+                  style={{ transform: "translateY(50%)" }}
+                >
+                  <CoverImg src={item.img} />
+                </FlexBox>
+              </FlexBox>
+              <FlexBox padding="5px 15px" flexDirection="column">
+                <FlexBox
+                  justifyContent="space-between"
+                  width="100%"
+                  alignItems="center"
+                >
+                  <StyledText fontSize="24px">{item.name}</StyledText>
+                  <FlexBox alignItems="center">
+                    <EyeIcon />
+                    <StyledText ml="5px" color="#5F5F5F">
+                      {item.look}
+                    </StyledText>
+                  </FlexBox>
+                </FlexBox>
+                <FlexBox
+                  justifyContent="space-between"
+                  width="100%"
+                  alignItems="center"
+                >
+                  <FlexBox alignItems="center">
+                    <StarIcon />
+                    <StyledText ml="5px" color="#5F5F5F" fontSize="10px">
+                      {item.star}
+                    </StyledText>
+                  </FlexBox>
+                  <StyledText color="#5F5F5F" fontSize="8px">
+                    {item.info}
+                  </StyledText>
+                </FlexBox>
+                <SectionThirdContent>{item.content}</SectionThirdContent>
+                <FlexBox>
+                  {item.hashtags.length > 0 &&
+                    item.hashtags.map((hashtag, index) => (
+                      <StyledText
+                        color="#0680AC"
+                        mr="5px"
+                        fontSize="10px"
+                        key={index}
+                      >
+                        {"#" + hashtag}
+                      </StyledText>
+                    ))}
+                </FlexBox>
+              </FlexBox>
+            </SectionThirdCard>
+          ))}
+        </FlexBox>
+      )}
+      {!allExpert.length && (
+        <FlexBox
+          justifyContent="center"
+          alignItems="center"
+          fontSize="14px"
+          height="100px"
+          color="rgb(117, 117, 117)"
+        >
+          無符合你需求的在地達人
+        </FlexBox>
+      )}
+      <FlexBox justifyContent="center">
+        {pageCounts.length &&
+          pageCounts.map((item, index) => (
+            <PageBox
+              background={activePageIndex === index ? "#5bd0fa" : "transparent"}
+              color={activePageIndex === index ? "#ffffff" : "#060606"}
+              onClick={() => setActivePageIndex(index)}
+            >
+              {item}
+            </PageBox>
+          ))}
+      </FlexBox>
     </SectionTwoContainer>
   );
 }

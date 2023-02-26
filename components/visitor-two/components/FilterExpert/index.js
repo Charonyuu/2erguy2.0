@@ -71,9 +71,9 @@ export default function FilterExpert() {
   const [endDate, setEndDate] = useState("");
   const [startTime, setStartTime] = useState("0");
   const [endTime, setEndTime] = useState("24");
-  //是否顯示選擇日期套件跳窗
+  /* 是否顯示選擇日期套件跳窗 */
   const [isShowDateRangePicker, setIsShowDateRangePicker] = useState(false);
-  //選擇日期
+  /* 選擇日期 */
   const [dateRange, setDateRange] = useState([
     {
       startDate: new Date(),
@@ -81,9 +81,9 @@ export default function FilterExpert() {
       key: "dateRangeKey",
     },
   ]);
-  //選擇哪些服務
+  /* 選擇哪些服務 */
   const [selectedService, setSelectedService] = useState([]);
-  //取得國家、區域、城市
+  /* 取得國家、區域、城市 */
   const searchFakeData = fakeDataUtils.searchForCity();
   const countryList = searchFakeData.map((x) => {
     return x.country;
@@ -102,7 +102,7 @@ export default function FilterExpert() {
       return x.area === selectCityInput.area;
     });
   const cityList = selectCityInput.area && getDistinctCity[0].city;
-  //瀏覽器寬度
+  /* 瀏覽器寬度 */
   const windowSize = windowSizeUtils();
 
   /**

@@ -234,3 +234,44 @@ export const Albunm = styled.img`
   width: 100%;
   height: auto;
 `;
+
+export const SectionThirdCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 300px;
+  margin: 10px 0;
+  box-shadow: 0px 1px 4px rgb(0 0 0 / 10%);
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  ${compose(layout)}
+`;
+
+export const SectionThirdContent = styled.p`
+  color: #404040;
+  margin: 10px 0;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: auto;
+  height: 80px;
+`;
+
+export const PageBox = styled.div`
+  border: 1px solid #5bd0fa;
+  color: #060606;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  ${compose(background, color)}
+
+  &:hover {
+    background: #5bd0fa;
+    color: #ffffff;
+  }
+`;
