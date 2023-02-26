@@ -6,11 +6,12 @@ import { FlexBox } from "@/styles/globalStyles";
 export const HeaderContainer = styled(FlexBox)`
   justify-content: space-between;
   padding: 0 20px;
-  height: 70px;
-  position: sticky;
+  width: 100%;
+  position: fixed;
   z-index: 999;
   top: 0;
   left: 0;
+  background: #ffffff;
 `;
 
 export const LogoContainer = styled.div`
@@ -18,7 +19,10 @@ export const LogoContainer = styled.div`
     width: 100px;
     height: 60px;
     object-fit: contain;
+    cursor: pointer;
   }
+  display: flex;
+  align-items: center;
   width: 100px;
   height: auto;
 `;
@@ -32,7 +36,7 @@ export const OptionContainer = styled(FlexBox)`
 `;
 
 export const Text = styled.div`
-  cursor: pointer;
+  cursor: ${(props) => (props.cursor ? "initial" : "pointer")};
   margin: 0 5px;
   color: ${(props) => (props.white ? "#fff" : "#0ecfff")};
   font-size: ${(props) => (props.Size ? props.Size : "15px")};
@@ -45,12 +49,10 @@ export const BeExpertContainer = styled(FlexBox)`
   cursor: pointer;
   font-size: 15px;
   font-weight: 400;
-  width: 140px;
-  height: 26px;
   border-radius: 9px;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 5px;
+  padding: 4px 9px;
   background-color: #0ecfff;
   color: white;
   margin-left: 10px;
@@ -68,13 +70,10 @@ export const FooterContainer = styled(FlexBox)`
 
 export const FooterOptionContainer = styled.div`
   display: flex;
-  width: 100vw;
+  justify-content: center;
   margin-bottom: 30px;
-  padding-left: 10%;
 `;
 export const LeftFooterContainer = styled.div`
-  width: 40%;
-  border-right: 2px solid white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,12 +90,22 @@ export const JoinUs = styled(Text)`
 export const IconContainer = styled(FlexBox)`
   svg {
     margin: 20px 10px 0;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
   justify-content: space-around;
 `;
 
+export const Divider = styled.div`
+width: 2px;
+  background: #ffffff;
+  margin: 0 100px;
+`;
+
 export const RightFooterContainer = styled.div`
-  width: 60%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -108,7 +117,8 @@ export const FooterLine = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 100px;
+  line-height: 26px;
+  margin: 0 50px 0 0;
   div:nth-child(1) {
     margin-bottom: 10px;
   }

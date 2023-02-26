@@ -6,17 +6,16 @@ import VisitorFourSection from "./components/VisitorFourSection";
 import VisitorFiveSection from "./components/VisitorFiveSection";
 import VisitorSixSection from "./components/VisitorSixSection";
 
-
 const VisitorOne = () => {
   return (
-    <>
+    <div style={{ paddingTop: "60px" }}>
       <VisitorOneHeader />
       <VisitorTwoSection />
       <VisitorThirdSection />
       <VisitorFourSection />
       <VisitorFiveSection />
       <VisitorSixSection />
-    </>
+    </div>
   );
 };
 
