@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { FlexBox } from "@/styles/globalStyles";
 
-
 // Header
 export const HeaderContainer = styled(FlexBox)`
   justify-content: space-between;
@@ -36,7 +35,7 @@ export const OptionContainer = styled(FlexBox)`
 `;
 
 export const Text = styled.div`
-  cursor: ${(props) => (props.cursor ? "initial" : "pointer")};
+  cursor: ${(props) => props.cursor};
   margin: 0 5px;
   color: ${(props) => (props.white ? "#fff" : "#0ecfff")};
   font-size: ${(props) => (props.Size ? props.Size : "15px")};
@@ -100,7 +99,7 @@ export const IconContainer = styled(FlexBox)`
 `;
 
 export const Divider = styled.div`
-width: 2px;
+  width: 2px;
   background: #ffffff;
   margin: 0 100px;
 `;
