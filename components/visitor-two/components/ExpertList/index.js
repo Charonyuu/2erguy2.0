@@ -38,7 +38,7 @@ export default function ExpertList() {
   /* 取得所有的達人 */
   const allExpert = fakeDataUtils.getAllExpert();
   const allExpertRwd = fakeDataUtils.getAllExpertRwd();
-  /* 瀏覽器寬度 */
+  /* 瀏覽器長寬 */
   const windowSize = windowSizeUtils();
   /* 頁數 */
   const [pageCounts, setPageCounts] = useState([]);

@@ -102,7 +102,7 @@ export default function FilterExpert() {
       return x.area === selectCityInput.area;
     });
   const cityList = selectCityInput.area && getDistinctCity[0].city;
-  /* 瀏覽器寬度 */
+  /* 瀏覽器長寬 */
   const windowSize = windowSizeUtils();
 
   /**

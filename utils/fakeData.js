@@ -147,6 +147,14 @@ const fakeData = {
       },
     ];
   },
+  getOneUserInfo: function () {
+    return {
+      userId: "U00000001",
+      nickName: "達人一",
+      role: "",
+      photo: "fake/album.png",
+    };
+  },
 };
 
 export default fakeData;

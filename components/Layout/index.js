@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
+import NavBar from "./NavBar";
 
 export default function Layout({ children }) {
   return (
@@ -13,6 +14,7 @@ export default function Layout({ children }) {
         <link rel="icon" href="/icons/logo.png" />
       </Head>
       <Header />
+      <NavBar />
       {children}
       <Footer />
     </>
