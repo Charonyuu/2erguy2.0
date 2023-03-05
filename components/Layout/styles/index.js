@@ -14,6 +14,7 @@ import {
 } from "styled-system";
 import { FlexBox } from "@/styles/globalStyles";
 import {
+  MEDIA_QUERY_320,
   MEDIA_QUERY_426,
   MEDIA_QUERY_720,
   MEDIA_QUERY_768,
@@ -178,11 +179,20 @@ export const NavBarContatiner = styled.div`
   align-items: flex-start;
   position: absolute;
   top: 0;
-  left: 0;
+  left: -300px;
   background: white;
   width: 300px;
   height: 100vh;
   padding: 0 0 0 20px;
+  transition: all 0.5s ease;
+
+  &.showNavBar {
+    left: 0;
+  }
+
+  ${MEDIA_QUERY_320} {
+    width: 250px;
+  }
 `;
 
 export const RowContatiner = styled.div`
@@ -198,7 +208,6 @@ export const RowContatiner = styled.div`
     font-size: 35px;
     height: 100%;
     display: block;
-    
   }
 
   .messageIcon,
@@ -296,10 +305,19 @@ export const RowdivideLine = styled.div`
 `;
 
 export const NavBarMask = styled.div`
+  display: none;
   position: absolute;
-  left: 0;
+  left: 300px;
   z-index: -1;
   background: #4d4d4d65;
   width: 100vw;
   height: 100vh;
+
+  &.showNavBarMask {
+    display: block;
+  }
+
+  ${MEDIA_QUERY_320} {
+    left: 250px;
+  }
 `;
