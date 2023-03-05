@@ -151,7 +151,7 @@ const fakeData = {
     return {
       userId: "U00000001",
       nickName: "達人一",
-      role: "",
+      role: "客人",
       photo: "fake/album.png",
     };
   },
