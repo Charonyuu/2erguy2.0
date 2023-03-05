@@ -46,7 +46,7 @@ export default function Header() {
           <BsList />
         </Hamburger>
       )}
-      {windowSize.width <= 720 && isShowNavBar && (
+      {windowSize.width <= 720 && (
         <NavBar isShowNavBar={isShowNavBar} setIsShowNavBar={setIsShowNavBar} />
       )}
       <LogoContainer>
