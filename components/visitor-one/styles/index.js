@@ -1,5 +1,14 @@
 import styled from "styled-components";
-
+import {
+  MEDIA_QUERY_320,
+  MEDIA_QUERY_375,
+  MEDIA_QUERY_425,
+  MEDIA_QUERY_426,
+  MEDIA_QUERY_720,
+  MEDIA_QUERY_768,
+  MEDIA_QUERY_1024,
+  MEDIA_QUERY_1440
+} from "@/styles/constants/media";
 //公用
 export const Overlay = styled.div`
   position: absolute;
@@ -34,17 +43,43 @@ export const SectionOneContainer = styled.div`
   position: relative;
   width: 100%;
   height: 400px;
+
+  ${MEDIA_QUERY_1024} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const SectionOneBox = styled.div`
   p {
     color: white;
     font-size: 24px;
+
+    ${MEDIA_QUERY_425} {
+    text-align: center;
+  }
   }
   position: absolute;
   left: 200px;
   top: 150px;
-  height: 230px;
+
+  ${MEDIA_QUERY_1024} {
+    left: inherit;
+    top: inherit;
+  }
+
+  ${MEDIA_QUERY_425} {
+    scale: 0.9;
+  }
+
+  ${MEDIA_QUERY_375} {
+    scale: 0.8;
+  }
+
+  ${MEDIA_QUERY_320} {
+    scale: 0.7;
+  }
 `;
 
 export const SectionOneInput = styled.div`
@@ -59,6 +94,10 @@ export const SectionOneInput = styled.div`
   font-size: 14px;
   border-radius: 4px 4px 0 0;
   position: relative;
+
+  ${MEDIA_QUERY_425} {
+    width: 67%;
+  }
 `;
 
 export const InputSelectedBox = styled.div`
@@ -89,6 +128,11 @@ export const SectionOneButton = styled.div`
   height: 30px;
   width: auto;
   padding: 0 10px;
+  white-space: nowrap;
+
+  ${MEDIA_QUERY_425} {
+    width: 26%;
+  }
 `;
 export const HoverInfomation = styled.div`
   margin: 40px;
@@ -163,6 +207,10 @@ export const SectionThirdCard = styled.div`
   width: 250px;
   border-radius: 10px;
   overflow: hidden;
+
+  ${MEDIA_QUERY_1440} {
+    width: auto;
+  }
 `;
 
 export const SectionThirdContent = styled.p`

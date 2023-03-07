@@ -25,6 +25,15 @@ input:focus{
   justify-content: center;
 }
 
+/** 遊客一－專家清單 */ 
+.slick-slider.expert-list .slick-track {
+  display: flex;
+}
+
+.slick-slider.expert-list .slick-slide {
+  float: initial;
+}
+
 /** 遊客二－專家清單 */ 
 .slick-slider.expert-album .slick-track {
   width: auto !important;

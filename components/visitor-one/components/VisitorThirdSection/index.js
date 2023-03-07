@@ -11,12 +11,22 @@ import EyeIcon from "public/icons/eyeIcon.svg";
 import StarIcon from "public/icons/starIcon.svg";
 import BlueRightArrow from "public/icons/blueRightArrow.svg";
 
+//utils
+import windowSizeUtils from "@/utils/windowSize";
+import { useEffect, useRef } from "react";
+
 const VisitorThirdSection = () => {
+  /**
+   * data
+   */
+  const { width } = windowSizeUtils();
+  const sliderRef = useRef(null);
+
   const PrevArrow = ({ onClick }) => {
     return (
       <FlexBox
         position="absolute"
-        left="0px"
+        left={width > 1440 ? "0px" : "-20px"}
         top="50%"
         zIndex="2"
         pointer
@@ -30,7 +40,7 @@ const VisitorThirdSection = () => {
     return (
       <FlexBox
         position="absolute"
-        right="0px"
+        right={width > 1440 ? "0px" : "-20px"}
         top="50%"
         zIndex="2"
         pointer
@@ -43,9 +53,27 @@ const VisitorThirdSection = () => {
   const settings = {
     slidesToShow: 4,
     slidesToScroll: 1,
+    // centerMode: width <= 1024 ? true : false,
     infinite: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 425,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows:false
+        },
+      },
+    ],
   };
 
   return (
@@ -55,13 +83,13 @@ const VisitorThirdSection = () => {
       </StyledText>
       <StyledText color="#848484">參與他們在地生活</StyledText>
       <FlexBox width="100%" height="300px" m="40px 0" p="0 50px">
-        <Slider {...settings}>
+        <Slider ref={sliderRef} className={"expert-list"} {...settings}>
           {fakeJson.map((item, index) => (
             <FlexBox
               width="100%"
               justifyContent="center"
               key={index}
-              p="0 40px"
+              p="0 15px"
             >
               <SectionThirdCard>
                 <FlexBox width="100%" height="90px" mb="30px">

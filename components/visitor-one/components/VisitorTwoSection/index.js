@@ -36,4 +36,4 @@ const VisitorTwoSection = () => {
   );
 };
 
-export default VisitorTwoSection
+export default VisitorTwoSection;
