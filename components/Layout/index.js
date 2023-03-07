@@ -14,7 +14,6 @@ export default function Layout({ children }) {
         <link rel="icon" href="/icons/logo.png" />
       </Head>
       <Header />
-      {/* <NavBar /> */}
       {children}
       <Footer />
     </>

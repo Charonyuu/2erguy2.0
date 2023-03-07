@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import {
   HeaderContainer,
   Hamburger,
@@ -27,15 +28,27 @@ export default function Header() {
    */
   /* 瀏覽器長寬 */
   const windowSize = windowSizeUtils();
+  const [isShowNavBar, setIsShowNavBar] = useState(false);
+
+  /**
+   * func
+   */
+  useEffect(() => {
+    if (windowSize.width > 720) {
+      setIsShowNavBar(false);
+    }
+  }, [windowSize.width]);
 
   return (
     <HeaderContainer>
       {windowSize.width <= 720 && (
-        <Hamburger>
+        <Hamburger onClick={() => setIsShowNavBar(true)}>
           <BsList />
         </Hamburger>
       )}
-      {windowSize.width <= 720 && <NavBar />}
+      {windowSize.width <= 720 && (
+        <NavBar isShowNavBar={isShowNavBar} setIsShowNavBar={setIsShowNavBar} />
+      )}
       <LogoContainer>
         <img src="icons/logo.png" />
       </LogoContainer>

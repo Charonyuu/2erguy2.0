@@ -14,6 +14,8 @@ import {
 } from "styled-system";
 import { FlexBox } from "@/styles/globalStyles";
 import {
+  MEDIA_QUERY_320,
+  MEDIA_QUERY_425,
   MEDIA_QUERY_426,
   MEDIA_QUERY_720,
   MEDIA_QUERY_768,
@@ -78,7 +80,8 @@ export const OptionContainer = styled(FlexBox)`
 
 export const Text = styled.div`
   cursor: ${(props) => props.cursor};
-  margin: 0 5px;
+  margin: ${(props) => (props.margin ? props.margin : "0 5px")};
+  text-align: ${(props) => props.textAlign};
   color: ${(props) => (props.white ? "#fff" : "#0ecfff")};
   font-size: ${(props) => (props.Size ? props.Size : "15px")};
   font-weight: 300;
@@ -103,16 +106,25 @@ export const BeExpertContainer = styled(FlexBox)`
 
 export const FooterContainer = styled(FlexBox)`
   width: 100%;
-  height: 400px;
+  padding: 65px 0;
   background-color: #1cafd1;
   justify-content: center;
   flex-direction: column;
+
+  ${MEDIA_QUERY_1024} {
+    align-items: center;
+  }
 `;
 
 export const FooterOptionContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+
+  ${MEDIA_QUERY_1024} {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 `;
 export const LeftFooterContainer = styled.div`
   display: flex;
@@ -120,12 +132,20 @@ export const LeftFooterContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  ${MEDIA_QUERY_1024} {
+    margin: 30px 0;
+  }
 `;
 
 export const JoinUs = styled(Text)`
   letter-spacing: 0.08em;
   font-size: 30px;
   color: white;
+
+  ${MEDIA_QUERY_425} {
+    font-size: 22px;
+  }
 `;
 
 export const IconContainer = styled(FlexBox)`
@@ -136,6 +156,10 @@ export const IconContainer = styled(FlexBox)`
     &:hover {
       opacity: 0.8;
     }
+
+    ${MEDIA_QUERY_425} {
+      scale: 0.9;
+    }
   }
   justify-content: space-around;
 `;
@@ -144,6 +168,10 @@ export const Divider = styled.div`
   width: 2px;
   background: #ffffff;
   margin: 0 100px;
+
+  ${MEDIA_QUERY_1024} {
+    display: none;
+  }
 `;
 
 export const RightFooterContainer = styled.div`
@@ -152,6 +180,7 @@ export const RightFooterContainer = styled.div`
   justify-content: flex-start;
   color: white;
   height: 200px;
+  ${compose(flexbox, layout)}
 `;
 
 export const FooterLine = styled.div`
@@ -159,7 +188,7 @@ export const FooterLine = styled.div`
   flex-direction: column;
   align-items: center;
   line-height: 26px;
-  margin: 0 50px 0 0;
+  width: 140px;
   div:nth-child(1) {
     margin-bottom: 10px;
   }
@@ -169,6 +198,10 @@ export const CopyRightContatiner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${MEDIA_QUERY_1024} {
+    width: 80%;
+  }
 `;
 
 //NavBar
@@ -178,11 +211,20 @@ export const NavBarContatiner = styled.div`
   align-items: flex-start;
   position: absolute;
   top: 0;
-  left: 0;
+  left: -300px;
   background: white;
   width: 300px;
   height: 100vh;
   padding: 0 0 0 20px;
+  transition: all 0.5s ease;
+
+  &.showNavBar {
+    left: 0;
+  }
+
+  ${MEDIA_QUERY_320} {
+    width: 250px;
+  }
 `;
 
 export const RowContatiner = styled.div`
@@ -198,7 +240,6 @@ export const RowContatiner = styled.div`
     font-size: 35px;
     height: 100%;
     display: block;
-    
   }
 
   .messageIcon,
@@ -296,10 +337,19 @@ export const RowdivideLine = styled.div`
 `;
 
 export const NavBarMask = styled.div`
+  display: none;
   position: absolute;
-  left: 0;
+  left: 300px;
   z-index: -1;
   background: #4d4d4d65;
   width: 100vw;
   height: 100vh;
+
+  &.showNavBarMask {
+    display: block;
+  }
+
+  ${MEDIA_QUERY_320} {
+    left: 250px;
+  }
 `;
