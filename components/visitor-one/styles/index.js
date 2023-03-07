@@ -90,7 +90,40 @@ export const SectionOneButton = styled.div`
   width: auto;
   padding: 0 10px;
 `;
+export const HoverInfomation = styled.div`
+  margin: 40px;
+  display: none;
+  position: absolute;
+  width: 250px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 1);
+  opacity: 0.9;
+  border-radius: 10px;
+  left: 0;
+  top: -12px;
+  &:before {
+    content: " ";
+    position: absolute;
+    transform: rotate(20deg);
+    width: 0;
+    height: 0;
+    left: -15px;
+    right: auto;
+    top: 0px;
+    bottom: auto;
+    border: 20px solid;
+    border-radius: 6px;
+    border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 0.5) transparent
+      transparent;
+  }
+`;
 
+export const IconHoverContainer = styled.div`
+  position: relative;
+  &:hover ${HoverInfomation} {
+    display: inline-block;
+  }
+`;
 //section2
 export const VideoContainer = styled.div`
   video {

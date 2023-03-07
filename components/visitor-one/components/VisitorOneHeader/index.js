@@ -6,8 +6,11 @@ import {
   SectionOneInput,
   SectionOneButton,
   InputSelectedBox,
+  IconHoverContainer,
+  HoverInfomation,
 } from "../../styles";
 import useOutsideClick from "@/utils/clickOutside";
+import DropDownArrowIcon from "public/icons/dropDownArrowIcon.svg";
 //icon
 import FeatureOneButton from "public/icons/feature1_icon.svg";
 import FeatureTwoButton from "public/icons/feature2_icon.svg";
@@ -82,9 +85,22 @@ const VisitorOneHeader = () => {
         <p>在地達人滿足旅行短時需求</p>
         <FlexBox margin="10px 0 20px">
           <SectionOneInput>
-            <StyledText onClick={() => { open ? _handleCloseDropDown() : setOpen(true)}}>
+            <FlexBox
+              alignItems="center"
+              onClick={() => {
+                open ? _handleCloseDropDown() : setOpen(true);
+              }}
+            >
               <InputValue />
-            </StyledText>
+              <FlexBox
+                position="absolute"
+                right="10px"
+                width="15px"
+                height="15px"
+              >
+                <DropDownArrowIcon />
+              </FlexBox>
+            </FlexBox>
             {open ? (
               <FlexBox
                 bg="rgba(255,255,255,.7)"
@@ -145,12 +161,30 @@ const VisitorOneHeader = () => {
           <SectionOneButton>搜尋</SectionOneButton>
         </FlexBox>
         <FlexBox width="300px" justifyContent="space-between">
-          <FeatureOneButton />
-          <FeatureTwoButton />
-          <FeatureThreeButton />
-          <FeatureFourButton />
-          <FeatureFiveButton />
-          <FeatureSixButton />
+          <IconHoverContainer>
+            <FeatureOneButton />
+            <HoverInfomation></HoverInfomation>
+          </IconHoverContainer>
+          <IconHoverContainer>
+            <FeatureTwoButton />
+            <HoverInfomation></HoverInfomation>
+          </IconHoverContainer>
+          <IconHoverContainer>
+            <FeatureThreeButton />
+            <HoverInfomation></HoverInfomation>
+          </IconHoverContainer>
+          <IconHoverContainer>
+            <FeatureFourButton />
+            <HoverInfomation></HoverInfomation>
+          </IconHoverContainer>
+          <IconHoverContainer>
+            <FeatureFiveButton />
+            <HoverInfomation></HoverInfomation>
+          </IconHoverContainer>
+          <IconHoverContainer>
+            <FeatureSixButton />
+            <HoverInfomation></HoverInfomation>
+          </IconHoverContainer>
         </FlexBox>
       </SectionOneBox>
     </SectionOneContainer>
