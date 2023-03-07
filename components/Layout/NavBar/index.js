@@ -126,7 +126,7 @@ export default function NavBar({ isShowNavBar, setIsShowNavBar }) {
         onClick={() => setIsShowLangOptions(!isShowLangOptions)}
       >
         <BigText>語言</BigText>
-        <IoIosArrowDown className={"arrowDownIcon"} />
+        <IoIosArrowDown className={"arrowDownIcon"} style={{transform: isShowLangOptions && "rotate(180deg)"}}/>
       </RowContatiner>
       {/* 語言-下拉式選單 */}
       {isShowLangOptions && (

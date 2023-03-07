@@ -7,7 +7,10 @@ import {
   SectionOneButton,
   InputSelectedBox,
 } from "../../styles";
+
+//utils
 import useOutsideClick from "@/utils/clickOutside";
+
 //icon
 import FeatureOneButton from "public/icons/feature1_icon.svg";
 import FeatureTwoButton from "public/icons/feature2_icon.svg";
@@ -66,7 +69,6 @@ const VisitorOneHeader = () => {
 
   useEffect(() => {
     if (open) return;
-    
   }, [open]);
 
   const _handleCloseDropDown = () => {
@@ -80,9 +82,13 @@ const VisitorOneHeader = () => {
       <Overlay />
       <SectionOneBox ref={ref}>
         <p>在地達人滿足旅行短時需求</p>
-        <FlexBox margin="10px 0 20px">
+        <FlexBox justifyContent="space-around" margin="10px 0 20px">
           <SectionOneInput>
-            <StyledText onClick={() => { open ? _handleCloseDropDown() : setOpen(true)}}>
+            <StyledText
+              onClick={() => {
+                open ? _handleCloseDropDown() : setOpen(true);
+              }}
+            >
               <InputValue />
             </StyledText>
             {open ? (

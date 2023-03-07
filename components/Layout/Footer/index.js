@@ -26,7 +26,7 @@ export default function Footer() {
    * data
    */
   /*瀏覽器長寬 */
-  const windowSize = useWindowSizeUtils();
+  const { width } = useWindowSizeUtils();
 
   return (
     <FooterContainer>
@@ -41,7 +41,7 @@ export default function Footer() {
           </IconContainer>
         </LeftFooterContainer>
         <Divider></Divider>
-        {windowSize.width > 425 ? (
+        {width > 425 ? (
           <RightFooterContainer>
             <FooterLine>
               <Text white Size="18px">
@@ -118,12 +118,16 @@ export default function Footer() {
       <CopyRightContatiner>
         <Text
           white
-          Size={windowSize.width <= 425 ? "15px" : "18px"}
+          Size={width <= 425 ? "15px" : "18px"}
           textAlign="center"
         >
           本平台僅提供媒合功能，各在地達人之資格與服務內容，須符合當地政府規定。
         </Text>
-        <Text white margin="30px 0 0 0" textAlign="center">
+        <Text
+          white
+          margin={width <= 768 && "30px 0 0 0"}
+          textAlign="center"
+        >
           © 2020 tour guide All rights reserved.
         </Text>
       </CopyRightContatiner>
