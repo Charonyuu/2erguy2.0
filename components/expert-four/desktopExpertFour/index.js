@@ -6,7 +6,11 @@ import UploadIcon from "public/icons/uploadIcon.svg";
 import Locker from "public/icons/locker.svg";
 import LightIcon from "public/icons/lightIcon.svg";
 import ShieldIcon from "public/icons/shield.svg";
-
+import ClockIcon from "public/icons/ExpertIcon/clock.svg";
+import MapIcon from "public/icons/ExpertIcon/map.svg";
+import EditIcon from "public/icons/ExpertIcon/edit.svg";
+import ArrowIcon from "public/icons/ExpertIcon/arrow.svg";
+import CreditCardIcon from "public/icons/ExpertIcon/creditCard.svg";
 
 const grayBorder = "1px solid #B5B5B6";
 const grayTextColor = "#A39FA0";
@@ -17,6 +21,7 @@ export default function DesktopExpertFour() {
   return (
     <FlexBox justifyContent="center" color={grayTextColor}>
       <FlexBox flexDirection="column" p="60px 20px 20px" width="80%">
+        <Nav/>
         <FlexBox justifyContent="flex-end" height="30px" alignItems="center">
           <StyledText fontSize="14px" mr="5px">
             自動儲存
@@ -57,6 +62,39 @@ export default function DesktopExpertFour() {
     </FlexBox>
   );
 }
+//nav
+const Nav = () => {
+  return (
+    <FlexBox
+      justifyContent="space-around"
+      m="20px 0"
+      p="0 50px"
+      alignItems="center"
+    >
+      <FlexBox alignItems="center" style={{cursor:'pointer'}}>
+        <ClockIcon />
+        <StyledText ml="10px">時間分享</StyledText>
+      </FlexBox>
+      <ArrowIcon />
+      <FlexBox alignItems="center" style={{cursor:'pointer'}}>
+        <MapIcon />
+        <StyledText ml="10px">編輯服務</StyledText>
+      </FlexBox>
+      <ArrowIcon />
+      <FlexBox alignItems="center" style={{cursor:'pointer'}}>
+        <EditIcon />
+        <StyledText ml="10px" color="#0096C8">
+          個人檔案
+        </StyledText>
+      </FlexBox>
+      <ArrowIcon />
+      <FlexBox alignItems="center" style={{cursor:'pointer'}}>
+        <CreditCardIcon />
+        <StyledText ml="10px">收款資訊</StyledText>
+      </FlexBox>
+    </FlexBox>
+  );
+};
 
 // 基本資料
 const AccountContainer = () => {
@@ -289,9 +327,16 @@ const PrivacyContainer = () => {
       </FlexBox>
 
       <ToggleMenu width="100%" alignItems="center" toggle={isToggle}>
-        <FlexBox alignItems="center" justifyContent="flex-end" width="100%" mb="5px">
+        <FlexBox
+          alignItems="center"
+          justifyContent="flex-end"
+          width="100%"
+          mb="5px"
+        >
           <LightIcon />
-          <StyledText ml="5px" color="#CCCCCC">此欄位為保密資訊</StyledText>
+          <StyledText ml="5px" color="#CCCCCC">
+            此欄位為保密資訊
+          </StyledText>
         </FlexBox>
         <FlexBox alignItems="center" mb="10px" width="100%">
           <Locker />
@@ -383,7 +428,15 @@ const PasswordContainer = () => {
           <Input width={"100%"} />
         </FlexBox>
         <FlexBox width="100%" justifyContent="flex-end">
-          <FlexBox bg="#00BDEC" p="2px 10px" color="#fff" borderRadius="20px" style={{cursor:"pointer"}}>儲存</FlexBox>
+          <FlexBox
+            bg="#00BDEC"
+            p="2px 10px"
+            color="#fff"
+            borderRadius="20px"
+            style={{ cursor: "pointer" }}
+          >
+            儲存
+          </FlexBox>
         </FlexBox>
       </ToggleMenu>
       <FlexBox
