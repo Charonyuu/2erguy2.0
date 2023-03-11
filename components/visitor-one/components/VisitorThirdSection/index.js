@@ -13,14 +13,12 @@ import BlueRightArrow from "public/icons/blueRightArrow.svg";
 
 //utils
 import windowSizeUtils from "@/utils/windowSize";
-import { useEffect, useRef } from "react";
 
 const VisitorThirdSection = () => {
   /**
    * data
    */
   const { width } = windowSizeUtils();
-  const sliderRef = useRef(null);
 
   const PrevArrow = ({ onClick }) => {
     return (
@@ -40,7 +38,7 @@ const VisitorThirdSection = () => {
     return (
       <FlexBox
         position="absolute"
-        right={width > 1440 ? "0px" : "-20px"}
+        right={width > 1440 ? "0px" : "-30px"}
         top="50%"
         zIndex="2"
         pointer
@@ -53,7 +51,6 @@ const VisitorThirdSection = () => {
   const settings = {
     slidesToShow: 4,
     slidesToScroll: 1,
-    // centerMode: width <= 1024 ? true : false,
     infinite: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -66,11 +63,27 @@ const VisitorThirdSection = () => {
         },
       },
       {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2.2,
+          slidesToScroll: 1,
+          centerPadding: "60px",
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+          centerPadding: "60px",
+        },
+      },
+      {
         breakpoint: 425,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1.2,
           slidesToScroll: 1,
-          arrows:false
+          arrows: false,
         },
       },
     ],
@@ -82,8 +95,13 @@ const VisitorThirdSection = () => {
         結交在地朋友
       </StyledText>
       <StyledText color="#848484">參與他們在地生活</StyledText>
-      <FlexBox width="100%" height="300px" m="40px 0" p="0 50px">
-        <Slider ref={sliderRef} className={"expert-list"} {...settings}>
+      <FlexBox
+        width="100%"
+        height="300px"
+        m="40px 0"
+        p={width > 425 ? "0 50px" : "0 15px"}
+      >
+        <Slider className={"expert-list"} {...settings}>
           {fakeJson.map((item, index) => (
             <FlexBox
               width="100%"

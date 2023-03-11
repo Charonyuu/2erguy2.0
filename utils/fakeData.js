@@ -155,6 +155,28 @@ const fakeData = {
       photo: "fake/album.png",
     };
   },
+  getHomeRwdTalk: function () {
+    return [
+      {
+        visitor: "嗨，你好！什麼是在地達人？",
+        expert: "我是土生土長的本地人/n可以帶你探索當地不一樣的生活體驗",
+      },
+      {
+        visitor: "可提供哪些服務？",
+        expert:
+          "包含好玩、好吃的體驗/n代購道地的伴手禮/n也可以提供接機、代駕服務/n我們現在也提供自己獨特的私房地圖/n是獨一無二的，快來看看",
+      },
+      {
+        visitor: "聽起來很棒，要怎麼預約？",
+        expert:
+          "按下面的按鈕/n然後輸入要去的地方/n想要一去共遊的時間、服務項目/n就可以開始找一位你喜愛的在地達人",
+      },
+      {
+        visitor: "太好了！",
+        expert: "",
+      },
+    ];
+  },
 };
 
 export default fakeData;

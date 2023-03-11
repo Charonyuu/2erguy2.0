@@ -9,12 +9,20 @@ import Slider from "react-slick";
 //icon
 import BlueRightArrow from "public/icons/blueRightArrow.svg";
 
+//utils
+import windowSizeUtils from "@/utils/windowSize";
+
 const VisitorFourSection = () => {
+  /**
+   * data
+   */
+  const { width } = windowSizeUtils();
+
   const PrevArrow = ({ onClick }) => {
     return (
       <FlexBox
         position="absolute"
-        left="10px"
+        left={width > 1440 ? "10px" : "-20px"}
         top="50%"
         zIndex="2"
         pointer
@@ -28,7 +36,7 @@ const VisitorFourSection = () => {
     return (
       <FlexBox
         position="absolute"
-        right="10px"
+        right={width > 1440 ? "10px" : "-30px"}
         top="50%"
         zIndex="2"
         style={{ transform: "translateY(-50%)" }}
@@ -44,6 +52,39 @@ const VisitorFourSection = () => {
     infinite: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2.3,
+          slidesToScroll: 1,
+          centerPadding: "60px",
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1.8,
+          slidesToScroll: 1,
+          centerPadding: "60px",
+        },
+      },
+      {
+        breakpoint: 425,
+        settings: {
+          slidesToShow: 1.3,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+    ],
   };
 
   return (
@@ -52,10 +93,20 @@ const VisitorFourSection = () => {
         歡度美好的假期
       </StyledText>
       <StyledText color="#848484">探索獨特的在地行程</StyledText>
-      <FlexBox width="100%" height="300px" m="40px 0" p="0 50px">
-        <Slider {...settings}>
+      <FlexBox
+        width="100%"
+        height="300px"
+        m="40px 0"
+        p={width > 425 ? "0 50px" : "0 15px"}
+      >
+        <Slider className={"city-list"} {...settings}>
           {fakeJson.map((item, index) => (
-            <FlexBox width="100%" justifyContent="center" key={index}>
+            <FlexBox
+              width="100%"
+              justifyContent="center"
+              key={index}
+              p="0 15px"
+            >
               <SectionFourCard>
                 <FlexBox width="100%" height="240px">
                   <CoverImg src={item.img} />

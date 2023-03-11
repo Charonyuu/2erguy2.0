@@ -15,11 +15,11 @@ const VisitorOne = () => {
   return (
     <div style={{ paddingTop: "60px" }}>
       <VisitorOneHeader />
-      {width > 1024 && <VisitorTwoSection />}
+      <VisitorTwoSection />
       <VisitorThirdSection />
       <VisitorFourSection />
       <VisitorFiveSection />
-      {width > 1024 && <VisitorSixSection />}
+      {width > 425 && <VisitorSixSection />}
     </div>
   );
 };

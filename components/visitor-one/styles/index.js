@@ -7,7 +7,7 @@ import {
   MEDIA_QUERY_720,
   MEDIA_QUERY_768,
   MEDIA_QUERY_1024,
-  MEDIA_QUERY_1440
+  MEDIA_QUERY_1440,
 } from "@/styles/constants/media";
 //公用
 export const Overlay = styled.div`
@@ -23,13 +23,13 @@ export const BottomButton = styled.div`
   background-color: white;
   border: 1px solid #707070;
   padding: 6px 15px;
+  margin: ${(props) => (props.m ? props.m : "0 0 10px 0")};
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 150px;
   cursor: pointer;
-  margin-bottom: 10px;
 `;
 
 //section1
@@ -37,7 +37,7 @@ export const BottomButton = styled.div`
 export const SectionOneContainer = styled.div`
   img {
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
   }
   position: relative;
@@ -49,6 +49,10 @@ export const SectionOneContainer = styled.div`
     justify-content: center;
     align-items: center;
   }
+
+  ${MEDIA_QUERY_425} {
+    height: 100vh;
+  }
 `;
 
 export const SectionOneBox = styled.div`
@@ -57,8 +61,8 @@ export const SectionOneBox = styled.div`
     font-size: 24px;
 
     ${MEDIA_QUERY_425} {
-    text-align: center;
-  }
+      text-align: center;
+    }
   }
   position: absolute;
   left: 200px;
@@ -160,6 +164,10 @@ export const HoverInfomation = styled.div`
     border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 0.5) transparent
       transparent;
   }
+
+  ${MEDIA_QUERY_768} {
+    top: 20px;
+  }
 `;
 
 export const IconHoverContainer = styled.div`
@@ -168,6 +176,7 @@ export const IconHoverContainer = styled.div`
     display: inline-block;
   }
 `;
+
 //section2
 export const VideoContainer = styled.div`
   video {
@@ -176,7 +185,7 @@ export const VideoContainer = styled.div`
     object-fit: contain;
   }
   width: auto;
-  height: 400px;
+  height: 100%;
   position: relative;
 `;
 
@@ -195,6 +204,78 @@ export const SectionTwoButton = styled.button`
   font-size: 18px;
   font-weight: 300;
   margin-top: 20px;
+  cursor: pointer;
+`;
+
+//section2 rwd
+export const MountainBg = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const RoleImg = styled.div`
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin: ${(props) => props.m && props.m};
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const TalkSection = styled.div`
+  margin: 30px 10px;
+`;
+
+export const TalkBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: ${(props) => (props.alignItems ? props.alignItems : "initial")};
+`;
+
+export const RoleText = styled.div`
+  color: white;
+  margin: ${(props) => props.m && props.m};
+`;
+
+export const TalkText = styled.div`
+  max-width: 280px;
+  background: ${(props) => props.bg && props.bg};
+  padding: 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  text-align: end;
+  color: ${(props) => props.color && props.color};
+
+  ${MEDIA_QUERY_320} {
+    max-width: 200px;
+    white-space: initial;
+  }
+`;
+
+export const TalkBtnSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  position: relative;
+`;
+
+export const TalkBtn = styled.div`
+  display: flex;
+  align-items: center;
+  color: white;
+  background: #0ecfff;
+  background: #0ecfff90;
+  border-radius: 30px;
+  padding: 10px 45px;
+  margin: 10px 0;
   cursor: pointer;
 `;
 
@@ -235,6 +316,14 @@ export const SectionFourCard = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 40px;
+
+  @media (max-width: 600px) and (min-width: 425px) {
+    width: auto;
+
+    & img {
+      object-fit: fill;
+    }
+  }
 `;
 
 export const SectionFourCardText = styled.div`
@@ -252,6 +341,14 @@ export const SectionFiveCard = styled.div`
   width: 100%;
   display: flex !important;
   align-items: center;
+  justify-content: space-between;
+
+  ${MEDIA_QUERY_768} {
+    flex-direction: column;
+    border: 1px solid #707070;
+    padding: 10px 0 60px 0;
+    background: white;
+  }
 `;
 
 //section 6

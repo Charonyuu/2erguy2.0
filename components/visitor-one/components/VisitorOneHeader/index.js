@@ -24,9 +24,12 @@ import FeatureFiveButton from "public/icons/feature5_icon.svg";
 import FeatureSixButton from "public/icons/feature6_icon.svg";
 import { useEffect, useState } from "react";
 
+//utils
 import fakeDataUtils from "@/utils/fakeData";
+import useWindowSizeUtils from "@/utils/windowSize";
 
 const VisitorOneHeader = () => {
+  const { width } = useWindowSizeUtils();
   const [open, setOpen] = useState();
   const [input, setInput] = useState({ country: "", area: "", city: "" });
 
@@ -77,8 +80,12 @@ const VisitorOneHeader = () => {
 
   const _handleCloseDropDown = () => {
     setOpen(false);
-    setInput({ country: "", area: "", city: "" });
   };
+
+  const _selectService = () => {
+
+  }
+  
   const ref = useOutsideClick(_handleCloseDropDown);
   return (
     <SectionOneContainer>
@@ -111,7 +118,7 @@ const VisitorOneHeader = () => {
                 bottom="0"
                 left="0"
                 minHeight="100px"
-                width="300px"
+                width="100%"
                 flexDirection="column"
                 style={{ transform: "translateY(100%)", zIndex: 2 }}
                 p="0 10px 10px"
@@ -164,29 +171,29 @@ const VisitorOneHeader = () => {
           <SectionOneButton>搜尋</SectionOneButton>
         </FlexBox>
         <FlexBox width="300px" justifyContent="space-between">
-          <IconHoverContainer>
+          <IconHoverContainer onClick={() => _selectService("1")}>
             <FeatureOneButton />
-            <HoverInfomation></HoverInfomation>
+            {width > 768 && <HoverInfomation></HoverInfomation>}
           </IconHoverContainer>
-          <IconHoverContainer>
+          <IconHoverContainer onClick={() => _selectService("2")}>
             <FeatureTwoButton />
-            <HoverInfomation></HoverInfomation>
+            {width > 768 && <HoverInfomation></HoverInfomation>}
           </IconHoverContainer>
-          <IconHoverContainer>
+          <IconHoverContainer onClick={() => _selectService("3")}>
             <FeatureThreeButton />
-            <HoverInfomation></HoverInfomation>
+            {width > 768 && <HoverInfomation></HoverInfomation>}
           </IconHoverContainer>
-          <IconHoverContainer>
+          <IconHoverContainer onClick={() => _selectService("4")}>
             <FeatureFourButton />
-            <HoverInfomation></HoverInfomation>
+            {width > 768 && <HoverInfomation></HoverInfomation>}
           </IconHoverContainer>
-          <IconHoverContainer>
+          <IconHoverContainer onClick={() => _selectService("5")}>
             <FeatureFiveButton />
-            <HoverInfomation></HoverInfomation>
+            {width > 768 && <HoverInfomation></HoverInfomation>}
           </IconHoverContainer>
-          <IconHoverContainer>
+          <IconHoverContainer onClick={() => _selectService("6")}>
             <FeatureSixButton />
-            <HoverInfomation></HoverInfomation>
+            {width > 768 && <HoverInfomation></HoverInfomation>}
           </IconHoverContainer>
         </FlexBox>
       </SectionOneBox>
