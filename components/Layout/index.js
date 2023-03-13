@@ -2,9 +2,10 @@ import React from "react";
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
-import NavBar from "./NavBar";
+import { useRouter } from "next/router";
 
 export default function Layout({ children }) {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -15,7 +16,7 @@ export default function Layout({ children }) {
       </Head>
       <Header />
       {children}
-      <Footer />
+      {router.asPath !== "/loginPage" ? <Footer /> : null}
     </>
   );
 }
