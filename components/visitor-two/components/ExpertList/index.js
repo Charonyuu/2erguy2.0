@@ -39,7 +39,7 @@ export default function ExpertList() {
   const allExpert = fakeDataUtils.getAllExpert();
   const allExpertRwd = fakeDataUtils.getAllExpertRwd();
   /* 瀏覽器長寬 */
-  const windowSize = windowSizeUtils();
+  const { width } = windowSizeUtils();
   /* 頁數 */
   const [pageCounts, setPageCounts] = useState([]);
   const [activePageIndex, setActivePageIndex] = useState(0);
@@ -114,10 +114,10 @@ export default function ExpertList() {
       <FlexBox justifyContent="center">
         <TitleBig>符合你需求的在地達人</TitleBig>
       </FlexBox>
-      {allExpert.length && windowSize.width > 1024 ? (
+      {allExpert.length && width > 1024 ? (
         allExpert.map((item, index) => (
           <FlexBox
-            key={index}
+            key={item.expertId}
             justifyContent="space-between"
             borderBottom={allExpert.length - 1 > index && "1px solid #707070"}
             p="40px 0"
@@ -174,7 +174,7 @@ export default function ExpertList() {
                   {...sliderSettings}
                 >
                   {item.albunm.map((item, index) => (
-                    <AlbunmBox key={index}>
+                    <AlbunmBox key={`album${index}`}>
                       <Albunm src={item} alt="達人相簿" />
                     </AlbunmBox>
                   ))}
@@ -209,10 +209,10 @@ export default function ExpertList() {
         <FlexBox justifyContent="space-between" p="40px 0" flexWrap="wrap">
           {allExpertRwd.map((item, index) => (
             <SectionThirdCard
-              key={index}
-              width={windowSize.width <= 520 ? "100%" : "45%"}
-              minWidth={windowSize.width <= 520 ? "100%" : "45%"}
-              maxWidth={windowSize.width <= 520 ? "100%" : "45%"}
+              key={`allExpertRwd${index}`}
+              width={width <= 520 ? "100%" : "45%"}
+              minWidth={width <= 520 ? "100%" : "45%"}
+              maxWidth={width <= 520 ? "100%" : "45%"}
             >
               <FlexBox width="100%" height="90px" mb="30px">
                 <CoverImg src={item.bg} />
@@ -266,7 +266,7 @@ export default function ExpertList() {
                         color="#0680AC"
                         mr="5px"
                         fontSize="10px"
-                        key={index}
+                        key={`hashtags${index}`}
                       >
                         {"#" + hashtag}
                       </StyledText>
@@ -292,6 +292,7 @@ export default function ExpertList() {
         {pageCounts.length &&
           pageCounts.map((item, index) => (
             <PageBox
+              key={`pageCounts${index}`}
               background={activePageIndex === index ? "#5bd0fa" : "transparent"}
               color={activePageIndex === index ? "#ffffff" : "#060606"}
               onClick={() => setActivePageIndex(index)}
