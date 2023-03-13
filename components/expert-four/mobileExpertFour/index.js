@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { FlexBox, StyledText } from "@/styles/globalStyles";
 import styled from "styled-components";
 import UploadIcon from "public/icons/uploadIcon.svg";
-import BlueLightIcon from "public/icons/bluelightIcon.svg";
+import BlueLightIcon from "public/icons/blueLightIcon.svg";
 import Locker from "public/icons/locker.svg";
 import ShieldIcon from "public/icons/shield.svg";
 
