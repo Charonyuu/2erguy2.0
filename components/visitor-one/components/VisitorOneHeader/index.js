@@ -82,10 +82,6 @@ const VisitorOneHeader = () => {
     setOpen(false);
   };
 
-  const _selectService = () => {
-
-  }
-  
   const ref = useOutsideClick(_handleCloseDropDown);
   return (
     <SectionOneContainer>
@@ -171,29 +167,29 @@ const VisitorOneHeader = () => {
           <SectionOneButton>搜尋</SectionOneButton>
         </FlexBox>
         <FlexBox width="300px" justifyContent="space-between">
-          <IconHoverContainer onClick={() => _selectService("1")}>
+          <IconHoverContainer>
             <FeatureOneButton />
-            {width > 768 && <HoverInfomation></HoverInfomation>}
+            <HoverInfomation className="hoverInfomationOne"></HoverInfomation>
           </IconHoverContainer>
-          <IconHoverContainer onClick={() => _selectService("2")}>
+          <IconHoverContainer>
             <FeatureTwoButton />
-            {width > 768 && <HoverInfomation></HoverInfomation>}
+            <HoverInfomation className="hoverInfomationTwo"></HoverInfomation>
           </IconHoverContainer>
-          <IconHoverContainer onClick={() => _selectService("3")}>
+          <IconHoverContainer>
             <FeatureThreeButton />
-            {width > 768 && <HoverInfomation></HoverInfomation>}
+            <HoverInfomation className="hoverInfomationThree"></HoverInfomation>
           </IconHoverContainer>
-          <IconHoverContainer onClick={() => _selectService("4")}>
+          <IconHoverContainer>
             <FeatureFourButton />
-            {width > 768 && <HoverInfomation></HoverInfomation>}
+            <HoverInfomation className="hoverInfomationFour"></HoverInfomation>
           </IconHoverContainer>
-          <IconHoverContainer onClick={() => _selectService("5")}>
+          <IconHoverContainer>
             <FeatureFiveButton />
-            {width > 768 && <HoverInfomation></HoverInfomation>}
+            <HoverInfomation className="hoverInfomationFive"></HoverInfomation>
           </IconHoverContainer>
-          <IconHoverContainer onClick={() => _selectService("6")}>
+          <IconHoverContainer>
             <FeatureSixButton />
-            {width > 768 && <HoverInfomation></HoverInfomation>}
+            <HoverInfomation className="hoverInfomationSix"></HoverInfomation>
           </IconHoverContainer>
         </FlexBox>
       </SectionOneBox>
