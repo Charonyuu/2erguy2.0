@@ -165,8 +165,75 @@ export const HoverInfomation = styled.div`
       transparent;
   }
 
-  ${MEDIA_QUERY_768} {
-    top: 20px;
+  &.hoverInfomationOne {
+    ${MEDIA_QUERY_768} {
+      top: 25px;
+    }
+  }
+
+  &.hoverInfomationTwo {
+    ${MEDIA_QUERY_768} {
+      top: 25px;
+      left: -65px;
+      &:before {
+        content: " ";
+        transform: rotate(65deg);
+        left: 11px;
+        top: -5px;
+      }
+    }
+  }
+
+  &.hoverInfomationThree {
+    ${MEDIA_QUERY_768} {
+      top: 25px;
+      left: -117px;
+      &:before {
+        content: " ";
+        transform: rotate(65deg);
+        left: 70px;
+        top: -5px;
+      }
+    }
+  }
+
+  &.hoverInfomationFour {
+    ${MEDIA_QUERY_768} {
+      top: 25px;
+      left: -170px;
+      &:before {
+        content: " ";
+        transform: rotate(65deg);
+        left: 122px;
+        top: -5px;
+      }
+    }
+  }
+
+  &.hoverInfomationFive {
+    ${MEDIA_QUERY_768} {
+      top: 25px;
+      left: -222px;
+      &:before {
+        content: " ";
+        transform: rotate(65deg);
+        left: 175px;
+        top: -5px;
+      }
+    }
+  }
+
+  &.hoverInfomationSix {
+    ${MEDIA_QUERY_768} {
+      top: 25px;
+      left: -280px;
+      &:before {
+        content: " ";
+        transform: rotate(110deg);
+        left: 210px;
+        top: -15px;
+      }
+    }
   }
 `;
 

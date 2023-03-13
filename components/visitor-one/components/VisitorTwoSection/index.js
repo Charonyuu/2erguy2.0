@@ -1,3 +1,4 @@
+import React from "react";
 import { FlexBox } from "@/styles/globalStyles";
 import {
   Overlay,
@@ -57,9 +58,9 @@ const VisitorTwoSection = () => {
           <MountainBg src="fake/index_sectionTwo_rwd.png" />
           <TalkSection>
             {talkData.map((item, index) => (
-              <>
+              <React.Fragment key={`talk${index}`}>
                 {item.visitor && (
-                  <FlexBox key={index} mb="20px">
+                  <FlexBox mb="20px">
                     <RoleImg m="13px 5px 0 0">
                       <img src="fake/index_talk_visitor.png" />
                     </RoleImg>
@@ -67,7 +68,7 @@ const VisitorTwoSection = () => {
                       <RoleText m="0 0 3px 10px">遊客</RoleText>
                       <TalkText bg="white">
                         {item.visitor.split("/n").map((text, index) => (
-                          <p key={index}>{text}</p>
+                          <p key={`visitorTalk${index}`}>{text}</p>
                         ))}
                       </TalkText>
                     </TalkBox>
@@ -79,7 +80,7 @@ const VisitorTwoSection = () => {
                       <RoleText m="0 10px 3px 0">在地達人</RoleText>
                       <TalkText bg="#7BC36B" color="white">
                         {item.expert.split("/n").map((text, index) => (
-                          <p key={index}>{text}</p>
+                          <p key={`expertTalk${index}`}>{text}</p>
                         ))}
                       </TalkText>
                     </TalkBox>
@@ -88,7 +89,7 @@ const VisitorTwoSection = () => {
                     </RoleImg>
                   </FlexBox>
                 )}
-              </>
+              </React.Fragment>
             ))}
             <TalkBtnSection>
               <p>選一個你想做的行程</p>
