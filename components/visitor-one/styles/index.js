@@ -246,12 +246,12 @@ export const IconHoverContainer = styled.div`
 
 //section2
 export const VideoContainer = styled.div`
-  video {
+  img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-  width: auto;
+  width: 100%;
   height: 100%;
   position: relative;
 `;

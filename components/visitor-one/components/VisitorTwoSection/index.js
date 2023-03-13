@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { FlexBox } from "@/styles/globalStyles";
 import {
   Overlay,
@@ -14,11 +15,12 @@ import {
   TalkBtnSection,
   TalkBtn,
 } from "../../styles";
+import FakeGif from "public/fake/screen.gif";
+
 
 //utils
 import useWindowSizeUtils from "@/utils/windowSize";
 import fakeDataUtils from "@/utils/fakeData";
-
 const VisitorTwoSection = () => {
   const { width } = useWindowSizeUtils();
   const talkData = fakeDataUtils.getHomeRwdTalk();
@@ -35,7 +37,7 @@ const VisitorTwoSection = () => {
           mb="50px"
         >
           <VideoContainer>
-            <video src="fake/fakeVideo.mp4" autoPlay loop muted></video>
+            <Image src={FakeGif} alt="" />
             <Overlay />
             <FlexBox
               flexDirection="column"
